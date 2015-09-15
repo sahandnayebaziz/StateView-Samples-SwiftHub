@@ -13,6 +13,7 @@ import SwiftyJSON
 class MainTableViewController: UITableViewController {
 
     var repos: [Repository] = []
+    var pagesDownloaded = 0
     
     
     
@@ -23,15 +24,28 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         title = "Repos"
         tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
+    }
+    
+    func openFilters() {
+        let vc = MainFiltersTableViewController(style: .Grouped)
+        presentViewController(UINavigationController(rootViewController: vc), animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
+        
+        if repos.isEmpty {
+           fetchData()
+        }
     }
     
     func fetchData() {
-        GHAPIManager.downloadRepositories(self)
+        if pagesDownloaded < 5 {
+            pagesDownloaded += 1
+            GHAPIManager.downloadRepositories(self, atPage: pagesDownloaded)
+        }
     }
     
     
@@ -57,6 +71,20 @@ class MainTableViewController: UITableViewController {
 
         let repo = repos[indexPath.row]
         return cell.setCell(repo)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let repo = repos[indexPath.row]
+        let vc = RepositoryDetailViewController()
+        vc.detailItem = repo
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == repos.count - 1 && repos.count > (20 * pagesDownloaded) {
+            print("did start fetch")
+            fetchData()
+        }
     }
 
     

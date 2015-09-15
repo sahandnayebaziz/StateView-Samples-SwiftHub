@@ -15,6 +15,8 @@
 		D847D2D21B8125E9003CBECE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D11B8125E9003CBECE /* Images.xcassets */; };
 		D847D2D51B8125E9003CBECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D31B8125E9003CBECE /* LaunchScreen.xib */; };
 		D847D2E11B8125E9003CBECE /* SwiftHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D847D2E01B8125E9003CBECE /* SwiftHubTests.swift */; };
+		D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */; };
+		D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D868C7FC1B8386D500D89A8E /* RepositoriesFilter.swift */; };
 		D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDEC1B81A1F100C3D3AD /* threading.swift */; };
 		D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF31B81A72800C3D3AD /* RepoPreviewTableViewCell.swift */; };
 		D869FDF61B81A87B00C3D3AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF51B81A87B00C3D3AD /* Repository.swift */; };
@@ -46,6 +48,8 @@
 		D847D2DA1B8125E9003CBECE /* SwiftHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D847D2DF1B8125E9003CBECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D847D2E01B8125E9003CBECE /* SwiftHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHubTests.swift; sourceTree = "<group>"; };
+		D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFiltersTableViewController.swift; sourceTree = "<group>"; };
+		D868C7FC1B8386D500D89A8E /* RepositoriesFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesFilter.swift; sourceTree = "<group>"; };
 		D869FDEC1B81A1F100C3D3AD /* threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threading.swift; sourceTree = "<group>"; };
 		D869FDF31B81A72800C3D3AD /* RepoPreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		D869FDF51B81A87B00C3D3AD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D869FDF51B81A87B00C3D3AD /* Repository.swift */,
+				D868C7FC1B8386D500D89A8E /* RepositoriesFilter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				D842BF7F1B81394700D0B1DD /* MainTableViewController.swift */,
+				D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */,
 				D847D2CC1B8125E9003CBECE /* RepositoryDetailViewController.swift */,
 			);
 			name = "View Controllers";
@@ -238,7 +244,9 @@
 		D847D2BB1B8125E9003CBECE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sahand Nayebaziz";
 				TargetAttributes = {
 					D847D2C21B8125E9003CBECE = {
@@ -344,8 +352,10 @@
 			files = (
 				D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */,
 				D842BF801B81394700D0B1DD /* MainTableViewController.swift in Sources */,
+				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
 				D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */,
 				D847D2CD1B8125E9003CBECE /* RepositoryDetailViewController.swift in Sources */,
+				D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,
 				D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */,
 				D869FDF61B81A87B00C3D3AD /* Repository.swift in Sources */,
@@ -411,6 +421,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -480,6 +491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -491,6 +503,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -509,6 +522,7 @@
 				);
 				INFOPLIST_FILE = SwiftHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftHub.app/SwiftHub";
 			};
@@ -524,6 +538,7 @@
 				);
 				INFOPLIST_FILE = SwiftHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftHub.app/SwiftHub";
 			};
