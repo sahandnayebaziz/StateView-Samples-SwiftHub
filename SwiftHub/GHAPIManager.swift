@@ -20,6 +20,8 @@ struct GHAPIManager {
             "page":"\(atPage)"
         ]
         
+        updateNetworkActivityIndicatorForActiveState(true)
+        
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: URLParameters)
             .validate()
             .responseJSON { _, _, result in
@@ -43,10 +45,14 @@ struct GHAPIManager {
                 case .Failure(_, let error):
                     print(error)
                 }
+                
+                updateNetworkActivityIndicatorForActiveState(false)
         }
     }
     
     static func downloadReadmeForRepository(repository: String, owner: String, delegate: RepositoryDetailViewController, completion: (()->Void)) {
+        
+        updateNetworkActivityIndicatorForActiveState(true)
         
         Alamofire.request(.GET, "https://api.github.com/repos/" + owner + "/" + repository + "/readme", parameters: nil)
             .validate()
@@ -62,6 +68,9 @@ struct GHAPIManager {
                 case .Failure(_, let error):
                     print(error)
                 }
+                dispatch_to_main_queue {
+                    updateNetworkActivityIndicatorForActiveState(false)
+                }
         }
     }
     
@@ -73,6 +82,10 @@ struct GHAPIManager {
         filters.append(RepositoriesFilter(name: "Last year", type: "date", qualifier: "created:<2013-01-01"))
         
         return filters
+    }
+    
+    private static func updateNetworkActivityIndicatorForActiveState (active: Bool) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = active
     }
 }
 
