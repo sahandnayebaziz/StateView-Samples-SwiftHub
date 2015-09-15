@@ -9,12 +9,16 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AFDateHelper
 
 struct GHAPIManager {
     
     static func downloadRepositories(delegate: MainTableViewController, atPage: Int) {
+        
+        let dateOneMonthAgo: String = NSDate().dateBySubtractingDays(30).toString(format: .Custom("YYYY-MM-dd"))
+        
         let URLParameters = [
-            "q":"language:swift",
+            "q":"language:swift created:>=\(dateOneMonthAgo)",
             "sort":"stars",
             "order":"desc",
             "page":"\(atPage)"
