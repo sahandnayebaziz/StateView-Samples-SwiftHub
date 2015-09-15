@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WebKit
 
-class RepositoryDetailViewController: UIViewController, UITextViewDelegate {
+class RepositoryDetailViewController: UIViewController, WKNavigationDelegate {
 
 
 
@@ -19,6 +20,10 @@ class RepositoryDetailViewController: UIViewController, UITextViewDelegate {
     }
 
     var contentContainer: UIView!
+    var descriptionLabel: UILabel?
+    var starsLabel: UILabel?
+    var webView: WKWebView?
+
     
     
     
@@ -29,9 +34,16 @@ class RepositoryDetailViewController: UIViewController, UITextViewDelegate {
         // Update the user interface for the detail item.
         if let detail: Repository = self.detailItem {
             title = detail.name
+            descriptionLabel?.text = detail.description
+            starsLabel?.text = "\(detail.stars)"
+            
+            if let URL = detail.url {
+                let request = NSURLRequest(URL: URL)
+                webView?.loadRequest(request)
+            }
         }
     }
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +74,40 @@ class RepositoryDetailViewController: UIViewController, UITextViewDelegate {
             make.height.equalTo(900)
         }
         
-
+        descriptionLabel = UILabel()
+        descriptionLabel!.font = UIFont.systemFontOfSize(13)
+        descriptionLabel!.numberOfLines = 3
+        contentContainer.addSubview(descriptionLabel!)
+        descriptionLabel!.snp_makeConstraints { make in
+            make.top.equalTo(contentContainer.snp_top).offset(16)
+            make.width.equalTo(contentContainer.snp_width).offset(-112)
+            make.left.equalTo(contentContainer.snp_left).offset(16)
+        }
+        
+        starsLabel = UILabel()
+        starsLabel!.font = UIFont.systemFontOfSize(13)
+        starsLabel!.textAlignment = .Right
+        starsLabel!.textColor = UIColor.lightGrayColor()
+        contentContainer.addSubview(starsLabel!)
+        starsLabel!.snp_makeConstraints { make in
+            make.top.equalTo(contentContainer.snp_top).offset(16)
+            make.width.equalTo(112)
+            make.right.equalTo(contentContainer.snp_right).offset(-16)
+        }
+        
+        webView = WKWebView()
+        webView!.backgroundColor = UIColor.purpleColor()
+        webView!.layer.cornerRadius = 12
+        webView!.clipsToBounds = true
+        webView!.allowsBackForwardNavigationGestures = true
+        webView!.navigationDelegate = self
+        contentContainer.addSubview(webView!)
+        webView!.snp_makeConstraints { make in
+            make.width.equalTo(contentContainer.snp_width).offset(-32)
+            make.top.equalTo(descriptionLabel!.snp_bottom).offset(16)
+            make.bottom.equalTo(contentContainer.snp_bottom).offset(-16)
+            make.centerX.equalTo(contentContainer.snp_centerX)
+        }
         
         self.configureView()
     }
@@ -70,6 +115,17 @@ class RepositoryDetailViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
 
 }

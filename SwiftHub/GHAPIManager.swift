@@ -35,9 +35,10 @@ struct GHAPIManager {
                         let name = repoRaw["name"].stringValue
                         let stars = repoRaw["stargazers_count"].intValue
                         let owner = repoRaw["owner"]["login"].stringValue
-                        let description = repoRaw["description"]["login"].stringValue
+                        let description = repoRaw["description"].stringValue
+                        let url = repoRaw["html_url"].stringValue
                         
-                        let repo = Repository(name: name, owner: owner, stars: stars, description: description)
+                        let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url)
                         dispatch_to_main_queue {
                             delegate.insertNewRepo(repo)
                         }
