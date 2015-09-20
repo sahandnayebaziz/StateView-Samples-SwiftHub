@@ -85,5 +85,12 @@ class MainFiltersTableViewController: UITableViewController {
         cell.accessoryType = .None
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "created"
+        }
+        return nil
+    }
+    
 
 }
