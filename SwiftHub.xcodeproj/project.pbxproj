@@ -10,7 +10,6 @@
 		B6D98129011871A804D8D10F /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18BC8622630A8539330CFB4 /* Pods_SwiftHub.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D842BF801B81394700D0B1DD /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842BF7F1B81394700D0B1DD /* MainTableViewController.swift */; };
 		D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D847D2C81B8125E9003CBECE /* AppDelegate.swift */; };
-		D847D2CD1B8125E9003CBECE /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D847D2CC1B8125E9003CBECE /* RepositoryDetailViewController.swift */; };
 		D847D2D01B8125E9003CBECE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D847D2CE1B8125E9003CBECE /* Main.storyboard */; };
 		D847D2D21B8125E9003CBECE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D11B8125E9003CBECE /* Images.xcassets */; };
 		D847D2D51B8125E9003CBECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D31B8125E9003CBECE /* LaunchScreen.xib */; };
@@ -41,7 +40,6 @@
 		D847D2C31B8125E9003CBECE /* SwiftHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D847D2C71B8125E9003CBECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D847D2C81B8125E9003CBECE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D847D2CC1B8125E9003CBECE /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		D847D2CF1B8125E9003CBECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D847D2D11B8125E9003CBECE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D847D2D41B8125E9003CBECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			children = (
 				D842BF7F1B81394700D0B1DD /* MainTableViewController.swift */,
 				D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */,
-				D847D2CC1B8125E9003CBECE /* RepositoryDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				D842BF801B81394700D0B1DD /* MainTableViewController.swift in Sources */,
 				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
 				D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */,
-				D847D2CD1B8125E9003CBECE /* RepositoryDetailViewController.swift in Sources */,
 				D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,
 				D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */,
@@ -490,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftHub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -502,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftHub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.sahand.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

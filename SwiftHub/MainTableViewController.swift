@@ -9,11 +9,19 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SafariServices
 
-class MainTableViewController: UITableViewController {
+protocol RepoViewDelegate {
+    func refreshReposWithNewFilters(filters: [RepositoriesFilter]?)
+}
+
+class MainTableViewController: UITableViewController, RepoViewDelegate {
 
     var repos: [Repository] = []
+    var usingFilters: [RepositoriesFilter] = []
     var pagesDownloaded = 0
+    
+    let filterViewController = MainFiltersTableViewController(style: .Grouped)
     
     
     
@@ -26,11 +34,16 @@ class MainTableViewController: UITableViewController {
         tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
+        
+        filterViewController.delegate = self
     }
     
     func openFilters() {
-        let vc = MainFiltersTableViewController(style: .Grouped)
-        presentViewController(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+        if !usingFilters.isEmpty {
+            filterViewController.selectRowForFilters(usingFilters)
+        }
+        
+        presentViewController(UINavigationController(rootViewController: filterViewController), animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,10 +55,8 @@ class MainTableViewController: UITableViewController {
     }
     
     func fetchData() {
-        if pagesDownloaded < 5 {
-            pagesDownloaded += 1
-            GHAPIManager.downloadRepositories(self, atPage: pagesDownloaded)
-        }
+        pagesDownloaded += 1
+        GHAPIManager.downloadRepositories(self, atPage: pagesDownloaded, withFilters: usingFilters)
     }
     
     
@@ -75,14 +86,15 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let repo = repos[indexPath.row]
-        let vc = RepositoryDetailViewController()
-        vc.detailItem = repo
-        navigationController?.pushViewController(vc, animated: true)
+        if let url = repo.url {
+            let vc = SFSafariViewController(URL: url)
+            vc.title = repo.name
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == repos.count - 1 && repos.count > (20 * pagesDownloaded) {
-            print("did start fetch")
             fetchData()
         }
     }
@@ -100,6 +112,27 @@ class MainTableViewController: UITableViewController {
         let indexPath = NSIndexPath(forRow: repos.count - 1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
+    }
+    
+    func refreshReposWithNewFilters(filters: [RepositoriesFilter]?) {
+        if let filters = filters {
+            if filters != usingFilters {
+                self.usingFilters = filters
+                
+                tableView.beginUpdates()
+                repos.removeAll()
+                var indexPathsToRemove: [NSIndexPath] = []
+                for index in 0...tableView.numberOfRowsInSection(0) - 1 {
+                    indexPathsToRemove.append(NSIndexPath(forRow: index, inSection: 0))
+                }
+                tableView.deleteRowsAtIndexPaths(indexPathsToRemove, withRowAnimation: .Automatic)
+                tableView.endUpdates()
+                
+                
+                pagesDownloaded = 0
+                fetchData()
+            }
+        }
     }
 
     

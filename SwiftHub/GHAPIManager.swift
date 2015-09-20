@@ -13,16 +13,24 @@ import AFDateHelper
 
 struct GHAPIManager {
     
-    static func downloadRepositories(delegate: MainTableViewController, atPage: Int) {
+    static func downloadRepositories(delegate: MainTableViewController, atPage: Int, withFilters filters: [RepositoriesFilter]?) {
         
-        let dateOneMonthAgo: String = NSDate().dateBySubtractingDays(30).toString(format: .Custom("YYYY-MM-dd"))
-        
-        let URLParameters = [
-            "q":"language:swift created:>=\(dateOneMonthAgo)",
+        var URLParameters: [String: String] = [
             "sort":"stars",
             "order":"desc",
             "page":"\(atPage)"
         ]
+        
+        let swiftLanguageQualifier = "language:swift"
+        var otherQualifiers = ""
+        if let filters = filters {
+            for filter in filters {
+                otherQualifiers = "\(otherQualifiers) \(filter.qualifier)"
+            }
+        }
+        
+        URLParameters["q"] = "\(swiftLanguageQualifier)\(otherQualifiers)"
+        
         
         updateNetworkActivityIndicatorForActiveState(true)
         
@@ -55,38 +63,19 @@ struct GHAPIManager {
         }
     }
     
-    static func downloadReadmeForRepository(repository: String, owner: String, delegate: RepositoryDetailViewController, completion: (()->Void)) {
-        
-        updateNetworkActivityIndicatorForActiveState(true)
-        
-        Alamofire.request(.GET, "https://api.github.com/repos/" + owner + "/" + repository + "/readme", parameters: nil)
-            .validate()
-            .responseJSON { _, _, result in
-                switch result {
-                case .Success:
-                    var json = JSON(result.value!)
-                    var readmeData = json["content"].stringValue
-                    dispatch_to_main_queue {
-                        //delegate.readme = readmeData
-                        completion()
-                    }
-                case .Failure(_, let error):
-                    print(error)
-                }
-                dispatch_to_main_queue {
-                    updateNetworkActivityIndicatorForActiveState(false)
-                }
-        }
-    }
-    
     static func createDateQualifiers() -> [RepositoriesFilter] {
         var filters: [RepositoriesFilter] = []
         
-        filters.append(RepositoriesFilter(name: "Last week", type: "date", qualifier: "created:<2013-01-01"))
-        filters.append(RepositoriesFilter(name: "Last month", type: "date", qualifier: "created:<2013-01-01"))
-        filters.append(RepositoriesFilter(name: "Last year", type: "date", qualifier: "created:<2013-01-01"))
+        filters.append(createDateFilterForDaysAgo(7, filterName: "Last Week"))
+        filters.append(createDateFilterForDaysAgo(30, filterName: "Last Month"))
+        filters.append(createDateFilterForDaysAgo(365, filterName: "Last Year"))
         
         return filters
+    }
+    
+    private static func createDateFilterForDaysAgo(days: Int, filterName: String) -> RepositoriesFilter {
+        let dateAsString = NSDate().dateBySubtractingDays(days).toString(format: .Custom("YYYY-MM-dd"))
+        return RepositoriesFilter(name: filterName, type: "date", qualifier: "created:>=\(dateAsString)")
     }
     
     private static func updateNetworkActivityIndicatorForActiveState (active: Bool) {
