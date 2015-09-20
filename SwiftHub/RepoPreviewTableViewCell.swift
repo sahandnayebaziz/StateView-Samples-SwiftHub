@@ -43,21 +43,8 @@ class RepoPreviewTableViewCell: UITableViewCell {
         }
         
         
-        
-//        starsLabel.font = UIFont.systemFontOfSize(12, weight: 0.3)
-//        starsLabel.textAlignment = .Right
-//        starsLabel.alpha = 0.6
-//        contentView.addSubview(starsLabel)
-//        starsLabel.snp_makeConstraints { make in
-//            make.top.equalTo(contentView.snp_top).offset(10)
-//            make.right.equalTo(contentView.snp_right).offset(-20)
-//        }
-        
-        
-        
         nameLabel.text = "/ \(repo.name)"
         ownerLabel.text = repo.owner
-//        starsLabel.text = "\(repo.stars)"
         
         return self
     }

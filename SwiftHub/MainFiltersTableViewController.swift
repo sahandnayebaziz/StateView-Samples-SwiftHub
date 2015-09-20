@@ -27,9 +27,22 @@ class MainFiltersTableViewController: UITableViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "filterCell")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "dismiss")
         self.clearsSelectionOnViewWillAppear = false
+    }
+    
+    func selectRowForFilters(filters: [RepositoriesFilter]) {
+        if filterGroups.isEmpty {
+            filterGroups.append(GHAPIManager.createDateQualifiers())
+        }
         
+        selectedFilters = filters
+        for filter in filters {
+            if filter.type == "date" {
+                if let indexOfFilter = filterGroups[0].indexOf(filter) {
+                    tableView.selectRowAtIndexPath(NSIndexPath(forRow: indexOfFilter, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
+                }
+            }
+        }
         
-        filterGroups.append(GHAPIManager.createDateQualifiers())
     }
     
     func dismiss() {
@@ -65,24 +78,11 @@ class MainFiltersTableViewController: UITableViewController {
         selectedFilters.append(filter)
         
         cell.accessoryType = .Checkmark
-        
-        print(selectedFilters)
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
         cell.accessoryType = .None
-    }
-    
-    func selectRowForFilters(filters: [RepositoriesFilter]) {
-        for filter in filters {
-            if filter.type == "date" {
-                if let indexOfFilter = filterGroups[0].indexOf(filter) {
-                    tableView.selectRowAtIndexPath(NSIndexPath(forRow: indexOfFilter, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
-                }
-            }
-        }
-        selectedFilters = filters
     }
     
 

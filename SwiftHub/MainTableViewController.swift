@@ -36,6 +36,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
         
         filterViewController.delegate = self
+        usingFilters = GHAPIManager.defaultQualifiers()
     }
     
     func openFilters() {
