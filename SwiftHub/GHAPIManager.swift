@@ -36,27 +36,27 @@ struct GHAPIManager {
         
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: URLParameters)
             .validate()
-            .responseJSON { _, _, result in
-                switch result {
-                case .Success:
-                    var json = JSON(result.value!)
-                    let numberOfReposFound = json["items"].array!.count
+            .responseJSON { response in
+                guard let data = response.result.value else {
+                    print(response.result.error)
+                    return
+                }
+                
+                var json = JSON(data)
+                let numberOfReposFound = json["items"].array!.count
+                
+                for repoIndex in 0...numberOfReposFound - 1 {
+                    let repoRaw = json["items"][repoIndex]
+                    let name = repoRaw["name"].stringValue
+                    let stars = repoRaw["stargazers_count"].intValue
+                    let owner = repoRaw["owner"]["login"].stringValue
+                    let description = repoRaw["description"].stringValue
+                    let url = repoRaw["html_url"].stringValue
                     
-                    for repoIndex in 0...numberOfReposFound - 1 {
-                        let repoRaw = json["items"][repoIndex]
-                        let name = repoRaw["name"].stringValue
-                        let stars = repoRaw["stargazers_count"].intValue
-                        let owner = repoRaw["owner"]["login"].stringValue
-                        let description = repoRaw["description"].stringValue
-                        let url = repoRaw["html_url"].stringValue
-                        
-                        let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url)
-                        dispatch_to_main_queue {
-                            delegate.insertNewRepo(repo)
-                        }
+                    let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url)
+                    dispatch_to_main_queue {
+                        delegate.insertNewRepo(repo)
                     }
-                case .Failure(_, let error):
-                    print(error)
                 }
                 
                 updateNetworkActivityIndicatorForActiveState(false)

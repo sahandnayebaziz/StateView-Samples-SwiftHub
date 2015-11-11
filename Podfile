@@ -5,7 +5,7 @@ use_frameworks!
 target 'SwiftHub' do
 
 pod 'Alamofire'
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode7'
+pod 'SwiftyJSON'
 pod 'SnapKit'
 pod 'AFDateHelper'
 
