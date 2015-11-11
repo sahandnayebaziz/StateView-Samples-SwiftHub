@@ -130,7 +130,7 @@ struct GHAPIManager {
     static func defaultQualifiers() -> [RepositoriesFilter] {
         var filters: [RepositoriesFilter] = []
         
-        filters.append(RepositoriesFilter(name: "All time", type: .Date, qualifier: ""))
+        filters.append(createDateFilterForDaysAgo(7, filterName: "Last week"))
         
         return filters
     }
