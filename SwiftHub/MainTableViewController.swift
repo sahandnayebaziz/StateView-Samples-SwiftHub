@@ -34,7 +34,9 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
+        let savedButton = UIBarButtonItem(image: UIImage(named: "Saved"), style: .Plain, target: self, action: "openSaved")
+        navigationItem.rightBarButtonItems = [searchButton, savedButton]
         
         filterViewController.delegate = self
         usingFilters = GHAPIManager.defaultQualifiers()
@@ -96,7 +98,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let repo = repos[indexPath.row]
         if let url = repo.url {
-            let vc = SFSafariViewController(URL: url)
+            let vc = SwiftHubSafariViewController(URL: url)
             vc.title = repo.name
             navigationController?.pushViewController(vc, animated: true)
         }
