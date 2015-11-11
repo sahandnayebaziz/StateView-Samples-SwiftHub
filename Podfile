@@ -10,6 +10,7 @@ pod 'SnapKit'
 pod 'AFDateHelper'
 pod 'PromiseKit'
 pod 'BRYXBanner'
+pod 'SwiftyUserDefaults'
 
 end
 
