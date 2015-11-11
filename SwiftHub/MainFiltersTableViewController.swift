@@ -36,7 +36,7 @@ class MainFiltersTableViewController: UITableViewController {
         
         selectedFilters = filters
         for filter in filters {
-            if filter.type == "date" {
+            if filter.type == .Date {
                 if let indexOfFilter = filterGroups[0].indexOf(filter) {
                     tableView.selectRowAtIndexPath(NSIndexPath(forRow: indexOfFilter, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
                 }

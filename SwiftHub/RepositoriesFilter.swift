@@ -8,13 +8,17 @@
 
 import Foundation
 
+enum RepoFilterType {
+    case Date, Name
+}
+
 struct RepositoriesFilter: Hashable, CustomStringConvertible {
     var name: String
-    var type: String // TODO: Enum? Different types of filters?
+    var type: RepoFilterType // TODO: Enum? Different types of filters?
     var qualifier: String // created:<2011-01-01
     
     
-    init(name: String, type: String, qualifier: String) {
+    init(name: String, type: RepoFilterType, qualifier: String) {
         self.name = name
         self.type = type
         self.qualifier = qualifier

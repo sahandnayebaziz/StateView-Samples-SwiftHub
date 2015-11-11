@@ -34,6 +34,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
         
         filterViewController.delegate = self
         usingFilters = GHAPIManager.defaultQualifiers()
@@ -45,6 +46,13 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         }
         
         presentViewController(UINavigationController(rootViewController: filterViewController), animated: true, completion: nil)
+    }
+    
+    func openSearch() {
+        let nav = UINavigationController(rootViewController: SearchTableViewController())
+        nav.modalTransitionStyle = .CrossDissolve
+        nav.modalPresentationStyle = .OverCurrentContext
+        presentViewController(nav, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

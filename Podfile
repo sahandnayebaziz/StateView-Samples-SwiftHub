@@ -8,6 +8,8 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'SnapKit'
 pod 'AFDateHelper'
+pod 'PromiseKit'
+pod 'BRYXBanner'
 
 end
 

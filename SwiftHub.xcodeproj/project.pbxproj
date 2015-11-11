@@ -14,12 +14,15 @@
 		D847D2D21B8125E9003CBECE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D11B8125E9003CBECE /* Images.xcassets */; };
 		D847D2D51B8125E9003CBECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D31B8125E9003CBECE /* LaunchScreen.xib */; };
 		D847D2E11B8125E9003CBECE /* SwiftHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D847D2E01B8125E9003CBECE /* SwiftHubTests.swift */; };
+		D85AA6361BF2C07B00F16A9C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA6351BF2C07B00F16A9C /* SearchTableViewController.swift */; };
+		D85AA6381BF2C1FE00F16A9C /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA6371BF2C1FE00F16A9C /* UINavigationController.swift */; };
 		D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */; };
 		D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D868C7FC1B8386D500D89A8E /* RepositoriesFilter.swift */; };
 		D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDEC1B81A1F100C3D3AD /* threading.swift */; };
 		D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF31B81A72800C3D3AD /* RepoPreviewTableViewCell.swift */; };
 		D869FDF61B81A87B00C3D3AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF51B81A87B00C3D3AD /* Repository.swift */; };
 		D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FBFC61B81B32000957318 /* GHAPIManager.swift */; };
+		D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89B5B421BF31E7F0080A100 /* BannerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +49,15 @@
 		D847D2DA1B8125E9003CBECE /* SwiftHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D847D2DF1B8125E9003CBECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D847D2E01B8125E9003CBECE /* SwiftHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHubTests.swift; sourceTree = "<group>"; };
+		D85AA6351BF2C07B00F16A9C /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		D85AA6371BF2C1FE00F16A9C /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFiltersTableViewController.swift; sourceTree = "<group>"; };
 		D868C7FC1B8386D500D89A8E /* RepositoriesFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesFilter.swift; sourceTree = "<group>"; };
 		D869FDEC1B81A1F100C3D3AD /* threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threading.swift; sourceTree = "<group>"; };
 		D869FDF31B81A72800C3D3AD /* RepoPreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		D869FDF51B81A87B00C3D3AD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D86FBFC61B81B32000957318 /* GHAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIManager.swift; sourceTree = "<group>"; };
+		D89B5B421BF31E7F0080A100 /* BannerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 				D869FDF91B81A89600C3D3AD /* Storyboard */,
 				D847D2C61B8125E9003CBECE /* Supporting Files */,
 				D869FDFB1B81A8A900C3D3AD /* Libraries */,
+				D85AA6391BF2C20200F16A9C /* Extensions */,
 			);
 			path = SwiftHub;
 			sourceTree = "<group>";
@@ -149,6 +156,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D85AA6391BF2C20200F16A9C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D85AA6371BF2C1FE00F16A9C /* UINavigationController.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D869FDF71B81A88500C3D3AD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +178,7 @@
 			children = (
 				D842BF7F1B81394700D0B1DD /* MainTableViewController.swift */,
 				D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */,
+				D85AA6351BF2C07B00F16A9C /* SearchTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -182,6 +198,7 @@
 				D869FDF31B81A72800C3D3AD /* RepoPreviewTableViewCell.swift */,
 				D847D2C81B8125E9003CBECE /* AppDelegate.swift */,
 				D86FBFC61B81B32000957318 /* GHAPIManager.swift */,
+				D89B5B421BF31E7F0080A100 /* BannerManager.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -348,9 +365,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */,
+				D85AA6381BF2C1FE00F16A9C /* UINavigationController.swift in Sources */,
+				D85AA6361BF2C07B00F16A9C /* SearchTableViewController.swift in Sources */,
 				D842BF801B81394700D0B1DD /* MainTableViewController.swift in Sources */,
 				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
 				D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */,
+				D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */,
 				D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,
 				D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */,
