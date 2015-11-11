@@ -21,7 +21,7 @@ class RepositoryTests: XCTestCase {
     }
 
     func testRepositorySerializationIsLossless() {
-        let original = Repository(name: "SwiftHub", owner: "Everybody", stars: 1000, description: "Hello, new and wonderful swift repositories", url: "http://www.github.com")
+        let original = Repository(name: "SwiftHub", owner: "Everybody", stars: 1000, description: "Hello, new and wonderful swift repositories", url: "http://www.github.com", id: 133)
         let serialized = original.serialized
         do {
             let restored = try Repository(serialized: serialized)

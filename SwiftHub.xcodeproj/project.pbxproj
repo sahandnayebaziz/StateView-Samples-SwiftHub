@@ -22,10 +22,11 @@
 		D869FDF61B81A87B00C3D3AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF51B81A87B00C3D3AD /* Repository.swift */; };
 		D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FBFC61B81B32000957318 /* GHAPIManager.swift */; };
 		D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89B5B421BF31E7F0080A100 /* BannerManager.swift */; };
-		D8AA4EF01BF3926600E03BFF /* SwiftHubSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EEF1BF3926600E03BFF /* SwiftHubSafariViewController.swift */; };
 		D8AA4EF21BF392FB00E03BFF /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF11BF392FB00E03BFF /* SaveManager.swift */; };
 		D8AA4EF41BF3999C00E03BFF /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF31BF3999C00E03BFF /* RepositoryTests.swift */; };
 		D8AA4EF51BF399C600E03BFF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF51B81A87B00C3D3AD /* Repository.swift */; };
+		D8AA4EF71BF3A1AE00E03BFF /* RepoSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF61BF3A1AE00E03BFF /* RepoSafariViewController.swift */; };
+		D8AA4EF91BF3AD3200E03BFF /* SavedReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF81BF3AD3200E03BFF /* SavedReposTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +61,10 @@
 		D869FDF51B81A87B00C3D3AD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D86FBFC61B81B32000957318 /* GHAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIManager.swift; sourceTree = "<group>"; };
 		D89B5B421BF31E7F0080A100 /* BannerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
-		D8AA4EEF1BF3926600E03BFF /* SwiftHubSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHubSafariViewController.swift; sourceTree = "<group>"; };
 		D8AA4EF11BF392FB00E03BFF /* SaveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		D8AA4EF31BF3999C00E03BFF /* RepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
+		D8AA4EF61BF3A1AE00E03BFF /* RepoSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSafariViewController.swift; sourceTree = "<group>"; };
+		D8AA4EF81BF3AD3200E03BFF /* SavedReposTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedReposTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +187,8 @@
 				D842BF7F1B81394700D0B1DD /* MainTableViewController.swift */,
 				D868C7FA1B83847600D89A8E /* MainFiltersTableViewController.swift */,
 				D85AA6351BF2C07B00F16A9C /* SearchTableViewController.swift */,
-				D8AA4EEF1BF3926600E03BFF /* SwiftHubSafariViewController.swift */,
+				D8AA4EF61BF3A1AE00E03BFF /* RepoSafariViewController.swift */,
+				D8AA4EF81BF3AD3200E03BFF /* SavedReposTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -372,17 +375,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */,
+				D8AA4EF71BF3A1AE00E03BFF /* RepoSafariViewController.swift in Sources */,
 				D85AA6381BF2C1FE00F16A9C /* UINavigationController.swift in Sources */,
 				D85AA6361BF2C07B00F16A9C /* SearchTableViewController.swift in Sources */,
 				D842BF801B81394700D0B1DD /* MainTableViewController.swift in Sources */,
 				D8AA4EF21BF392FB00E03BFF /* SaveManager.swift in Sources */,
 				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
+				D8AA4EF91BF3AD3200E03BFF /* SavedReposTableViewController.swift in Sources */,
 				D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */,
 				D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */,
 				D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,
 				D86FBFC71B81B32000957318 /* GHAPIManager.swift in Sources */,
-				D8AA4EF01BF3926600E03BFF /* SwiftHubSafariViewController.swift in Sources */,
 				D869FDF61B81A87B00C3D3AD /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

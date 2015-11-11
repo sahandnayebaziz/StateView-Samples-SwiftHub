@@ -92,13 +92,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         navigationController?.dismiss()
     }
     
+    
+    // TODO: don't duplicate this three times like it is now
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let repo = results[indexPath.row]
-        if let url = repo.url {
-            let vc = SFSafariViewController(URL: url)
-            vc.title = repo.name
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = RepoSafariViewController(URL: repo.url)
+        vc.repo = repo
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

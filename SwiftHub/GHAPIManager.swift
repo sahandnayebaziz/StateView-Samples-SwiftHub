@@ -54,8 +54,9 @@ struct GHAPIManager {
                     let owner = repoRaw["owner"]["login"].stringValue
                     let description = repoRaw["description"].stringValue
                     let url = repoRaw["html_url"].stringValue
+                    let id = repoRaw["id"].intValue // TODO: don't do this expansion twice
                     
-                    let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url)
+                    let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
                     dispatch_to_main_queue {
                         delegate.insertNewRepo(repo)
                     }
@@ -103,8 +104,9 @@ struct GHAPIManager {
                             let owner = repoRaw["owner"]["login"].stringValue
                             let description = repoRaw["description"].stringValue
                             let url = repoRaw["html_url"].stringValue
+                            let id = repoRaw["id"].intValue
                             
-                            let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url)
+                            let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
                             repos.append(repo)
                         }
                     }

@@ -35,7 +35,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
-        let savedButton = UIBarButtonItem(image: UIImage(named: "Saved"), style: .Plain, target: self, action: "openSaved")
+        let savedButton = UIBarButtonItem(image: UIImage(named: "Save"), style: .Plain, target: self, action: "openSaved")
         navigationItem.rightBarButtonItems = [searchButton, savedButton]
         
         filterViewController.delegate = self
@@ -52,6 +52,13 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
     
     func openSearch() {
         let nav = UINavigationController(rootViewController: SearchTableViewController())
+        nav.modalTransitionStyle = .CrossDissolve
+        nav.modalPresentationStyle = .OverCurrentContext
+        presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    func openSaved() {
+        let nav = UINavigationController(rootViewController: SavedReposTableViewController())
         nav.modalTransitionStyle = .CrossDissolve
         nav.modalPresentationStyle = .OverCurrentContext
         presentViewController(nav, animated: true, completion: nil)
@@ -97,11 +104,9 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let repo = repos[indexPath.row]
-        if let url = repo.url {
-            let vc = SwiftHubSafariViewController(URL: url)
-            vc.title = repo.name
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = RepoSafariViewController(URL: repo.url)
+        vc.repo = repo
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
