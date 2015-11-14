@@ -27,6 +27,8 @@
 		D8AA4EF51BF399C600E03BFF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDF51B81A87B00C3D3AD /* Repository.swift */; };
 		D8AA4EF71BF3A1AE00E03BFF /* RepoSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF61BF3A1AE00E03BFF /* RepoSafariViewController.swift */; };
 		D8AA4EF91BF3AD3200E03BFF /* SavedReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF81BF3AD3200E03BFF /* SavedReposTableViewController.swift */; };
+		D8B6C20D1BF7BD9500BB42B8 /* GHAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B6C20C1BF7BD9500BB42B8 /* GHAuthManager.swift */; };
+		D8C2E95B1BF572D6002C30F6 /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C2E95A1BF572D6002C30F6 /* OAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D8AA4EF31BF3999C00E03BFF /* RepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		D8AA4EF61BF3A1AE00E03BFF /* RepoSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSafariViewController.swift; sourceTree = "<group>"; };
 		D8AA4EF81BF3AD3200E03BFF /* SavedReposTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedReposTableViewController.swift; sourceTree = "<group>"; };
+		D8B6C20C1BF7BD9500BB42B8 /* GHAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAuthManager.swift; sourceTree = "<group>"; };
+		D8C2E95A1BF572D6002C30F6 /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				D847D2C81B8125E9003CBECE /* AppDelegate.swift */,
-				D86FBFC61B81B32000957318 /* GHAPIManager.swift */,
+				D8C2E9591BF572C9002C30F6 /* Github API */,
 				D89B5B421BF31E7F0080A100 /* BannerManager.swift */,
 				D8AA4EF11BF392FB00E03BFF /* SaveManager.swift */,
 			);
@@ -219,6 +223,16 @@
 				D869FDEC1B81A1F100C3D3AD /* threading.swift */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D8C2E9591BF572C9002C30F6 /* Github API */ = {
+			isa = PBXGroup;
+			children = (
+				D86FBFC61B81B32000957318 /* GHAPIManager.swift */,
+				D8B6C20C1BF7BD9500BB42B8 /* GHAuthManager.swift */,
+				D8C2E95A1BF572D6002C30F6 /* OAuth.swift */,
+			);
+			name = "Github API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +397,8 @@
 				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
 				D8AA4EF91BF3AD3200E03BFF /* SavedReposTableViewController.swift in Sources */,
 				D869FDF41B81A72800C3D3AD /* RepoPreviewTableViewCell.swift in Sources */,
+				D8C2E95B1BF572D6002C30F6 /* OAuth.swift in Sources */,
+				D8B6C20D1BF7BD9500BB42B8 /* GHAuthManager.swift in Sources */,
 				D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */,
 				D868C7FB1B83847600D89A8E /* MainFiltersTableViewController.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,

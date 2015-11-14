@@ -11,7 +11,7 @@ import UIKit
 class SavedReposTableViewController: UITableViewController {
     
     var repos: [Repository] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "savedRepo")
@@ -21,27 +21,31 @@ class SavedReposTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        repos = SaveManager.allSavedRepositories()
-        tableView.reloadData()
-    }
 
+        GHAPIManager.getStarredRepositories().then { repos -> Void in
+            self.repos = repos
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return repos.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("savedRepo", forIndexPath: indexPath) as! RepoPreviewTableViewCell
@@ -55,5 +59,5 @@ class SavedReposTableViewController: UITableViewController {
         vc.repo = repo
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }

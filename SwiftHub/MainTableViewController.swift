@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SafariServices
+import AuthenticationViewController
 
 protocol RepoViewDelegate {
     func refreshReposWithNewFilters(filters: [RepositoriesFilter]?)
@@ -40,6 +41,17 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
         
         filterViewController.delegate = self
         usingFilters = GHAPIManager.defaultQualifiers()
+        GHAuthManager.tryAuthenticating()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        if GHAuthManager.isAuthenticated() {
+//            
+//        } else {
+//            GHAuthManager.tryAuthenticating()
+//        }
+        
     }
     
     func openFilters() {

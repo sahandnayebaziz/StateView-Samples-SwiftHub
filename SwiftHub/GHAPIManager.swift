@@ -12,9 +12,11 @@ import SwiftyJSON
 import AFDateHelper
 import PromiseKit
 import BRYXBanner
+import SwiftyUserDefaults
 
-struct GHAPIManager {
+public struct GHAPIManager {
     
+    // MARK: - GET Requests -
     static func downloadRepositories(delegate: MainTableViewController, atPage: Int, withFilters filters: [RepositoriesFilter]?) {
         
         var URLParameters: [String: String] = [
@@ -118,6 +120,50 @@ struct GHAPIManager {
         }
     }
     
+    static func getStarredRepositories() -> Promise<[Repository]> {
+        return Promise { fulfill, reject in
+            var URLParameters = [
+                "access_token": GHAuthManager.getToken()
+            ]
+            
+            updateNetworkActivityIndicatorForActiveState(true)
+            
+            Alamofire.request(.GET, "https://api.github.com/user/starred", parameters: URLParameters)
+                .validate()
+                .responseJSON { response in
+                    guard let data = response.result.value else {
+                        if let error = response.result.error {
+                            reject(error)
+                        }
+                        return
+                    }
+                    
+                    var json = JSON(data)
+                    let numberOfReposFound = json.array!.count
+                    var repos: [Repository] = []
+                    
+                    if numberOfReposFound > 0 {
+                        for repoIndex in 0...numberOfReposFound - 1 {
+                            let repoRaw = json[repoIndex]
+                            let name = repoRaw["name"].stringValue
+                            let stars = repoRaw["stargazers_count"].intValue
+                            let owner = repoRaw["owner"]["login"].stringValue
+                            let description = repoRaw["description"].stringValue
+                            let url = repoRaw["html_url"].stringValue
+                            let id = repoRaw["id"].intValue
+                            
+                            let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
+                            repos.append(repo)
+                        }
+                    }
+                    
+                    updateNetworkActivityIndicatorForActiveState(false)
+                    fulfill(repos)
+            }
+        }
+    }
+    
+    // MARK: - Data helpers -
     static func createDateQualifiers() -> [RepositoriesFilter] {
         var filters: [RepositoriesFilter] = []
         
