@@ -17,7 +17,7 @@ import SwiftyUserDefaults
 public struct GHAPIManager {
     
     // MARK: - GET Requests -
-    static func downloadRepositories(delegate: MainTableViewController, atPage: Int, withFilters filters: [RepositoriesFilter]?) {
+    static func downloadRepositories(atPage: Int, withFilters filters: [RepositoriesFilter]?) {
         
         var URLParameters: [String: String] = [
             "sort":"stars",
@@ -60,7 +60,7 @@ public struct GHAPIManager {
                     
                     let repo = Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
                     dispatch_to_main_queue {
-                        delegate.insertNewRepo(repo)
+//                        delegate.insertNewRepo(repo)
                     }
                 }
                 

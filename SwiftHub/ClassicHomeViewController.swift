@@ -1,5 +1,5 @@
 //
-//  MainTableViewController.swift
+//  HomeViewController.swift
 //  SwiftHub
 //
 //  Created by Sahand Nayebaziz on 8/16/15.
@@ -12,11 +12,21 @@ import SwiftyJSON
 import SafariServices
 import AuthenticationViewController
 
-protocol RepoViewDelegate {
-    func refreshReposWithNewFilters(filters: [RepositoriesFilter]?)
-}
-
-class MainTableViewController: UITableViewController, RepoViewDelegate {
+class ClassicHomeViewController: UITableViewController, RepoViewDelegate {
+    
+    override func viewDidLoad() {
+        title = "Repos"
+        tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
+//        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
+//        let savedButton = UIBarButtonItem(image: UIImage(named: "Save"), style: .Plain, target: self, action: "openSaved")
+//        navigationItem.rightBarButtonItems = [searchButton, savedButton]
+        
+        filterViewController.delegate = self
+//        usingFilters = GHAPIManager.defaultQualifiers()
+//        GHAuthManager.tryAuthenticating()
+    }
 
     var repos: [Repository] = []
     var usingFilters: [RepositoriesFilter] = []
@@ -30,19 +40,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
     
     
     
-    override func viewDidLoad() {
-        title = "Repos"
-        tableView.registerClass(RepoPreviewTableViewCell.self, forCellReuseIdentifier: "repoCell")
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "openFilters")
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "openSearch")
-        let savedButton = UIBarButtonItem(image: UIImage(named: "Save"), style: .Plain, target: self, action: "openSaved")
-        navigationItem.rightBarButtonItems = [searchButton, savedButton]
-        
-        filterViewController.delegate = self
-        usingFilters = GHAPIManager.defaultQualifiers()
-        GHAuthManager.tryAuthenticating()
-    }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -86,7 +84,7 @@ class MainTableViewController: UITableViewController, RepoViewDelegate {
     
     func fetchData() {
         pagesDownloaded += 1
-        GHAPIManager.downloadRepositories(self, atPage: pagesDownloaded, withFilters: usingFilters)
+        GHAPIManager.downloadRepositories(pagesDownloaded, withFilters: usingFilters)
     }
     
     
