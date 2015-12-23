@@ -8,10 +8,12 @@
 
 import UIKit
 
-class HomeTableViewDataSource: NSObject, UITableViewDataSource {
+class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataReceiver {
+    
+    var tableView: UITableView? = nil
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return SHGithub.go.getRepositories(false, atPage: 0, receiver: self).count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -20,10 +22,19 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HomeTableViewCell", forIndexPath: indexPath) as! HomeTableViewCell
-        cell.configureCell()
+        let repo = SHGithub.go.getRepositories(true, atPage: nil, receiver: nil)[indexPath.row]
+
+        cell.configureCell(repo)
         
         return cell
     }
     
+    func receiveNewRepos(repos: [Repository]) {
+        guard let tableView = tableView else {
+            fatalError("Table view can not be used from HomeTableViewDataSource before it has been assigned.")
+        }
+        
+        tableView.reloadData()
+    }
 
 }

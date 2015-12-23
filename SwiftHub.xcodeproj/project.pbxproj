@@ -25,6 +25,8 @@
 		D8811F7A1C29089F004A9301 /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F791C29089F004A9301 /* HomeTableViewDataSource.swift */; };
 		D8811F7D1C290B80004A9301 /* SHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F7C1C290B80004A9301 /* SHColors.swift */; };
 		D8811F801C29E5C8004A9301 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */; };
+		D8811F821C29EFDA004A9301 /* SHGithub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F811C29EFDA004A9301 /* SHGithub.swift */; };
+		D8811F841C29F0E6004A9301 /* SHGithub Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F831C29F0E6004A9301 /* SHGithub Protocols.swift */; };
 		D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89B5B421BF31E7F0080A100 /* BannerManager.swift */; };
 		D8AA4EF21BF392FB00E03BFF /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF11BF392FB00E03BFF /* SaveManager.swift */; };
 		D8AA4EF41BF3999C00E03BFF /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AA4EF31BF3999C00E03BFF /* RepositoryTests.swift */; };
@@ -70,6 +72,8 @@
 		D8811F791C29089F004A9301 /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
 		D8811F7C1C290B80004A9301 /* SHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHColors.swift; sourceTree = "<group>"; };
 		D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		D8811F811C29EFDA004A9301 /* SHGithub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHGithub.swift; sourceTree = "<group>"; };
+		D8811F831C29F0E6004A9301 /* SHGithub Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHGithub Protocols.swift"; sourceTree = "<group>"; };
 		D89B5B421BF31E7F0080A100 /* BannerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
 		D8AA4EF11BF392FB00E03BFF /* SaveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		D8AA4EF31BF3999C00E03BFF /* RepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D8811F7C1C290B80004A9301 /* SHColors.swift */,
+				D8811F861C29F0EE004A9301 /* Github */,
 			);
 			name = "Configuration Families";
 			sourceTree = "<group>";
@@ -251,6 +256,15 @@
 				D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */,
 			);
 			name = "Table View";
+			sourceTree = "<group>";
+		};
+		D8811F861C29F0EE004A9301 /* Github */ = {
+			isa = PBXGroup;
+			children = (
+				D8811F811C29EFDA004A9301 /* SHGithub.swift */,
+				D8811F831C29F0E6004A9301 /* SHGithub Protocols.swift */,
+			);
+			name = Github;
 			sourceTree = "<group>";
 		};
 		D8C2E9591BF572C9002C30F6 /* Github API */ = {
@@ -418,10 +432,12 @@
 				D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */,
 				D8AA4EF71BF3A1AE00E03BFF /* RepoSafariViewController.swift in Sources */,
 				D85AA6381BF2C1FE00F16A9C /* UINavigationController.swift in Sources */,
+				D8811F841C29F0E6004A9301 /* SHGithub Protocols.swift in Sources */,
 				D85AA6361BF2C07B00F16A9C /* SearchTableViewController.swift in Sources */,
 				D842BF801B81394700D0B1DD /* ClassicHomeViewController.swift in Sources */,
 				D8811F741C2907C7004A9301 /* Home Protocols.swift in Sources */,
 				D8811F781C290857004A9301 /* HomeViewController.swift in Sources */,
+				D8811F821C29EFDA004A9301 /* SHGithub.swift in Sources */,
 				D8AA4EF21BF392FB00E03BFF /* SaveManager.swift in Sources */,
 				D868C7FD1B8386D500D89A8E /* RepositoriesFilter.swift in Sources */,
 				D8811F801C29E5C8004A9301 /* HomeTableViewCell.swift in Sources */,

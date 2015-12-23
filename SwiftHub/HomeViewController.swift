@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class HomeViewController: UIViewController, UITableViewDelegate {
     
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         
         tableView.registerClass(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
         tableView.dataSource = self.dataSource
+        dataSource.tableView = tableView
         tableView.delegate = self
     }
 
@@ -42,5 +44,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 59
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let repo = SHGithub.go.getRepositories(true, atPage: nil, receiver: nil)[indexPath.row]
+        let viewController = SFSafariViewController(URL: repo.url)
+        presentViewController(viewController, animated: true) {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
 }

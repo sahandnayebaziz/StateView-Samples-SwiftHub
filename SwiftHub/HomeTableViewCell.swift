@@ -21,7 +21,7 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell() {
+    func configureCell(repo: Repository) {
         backgroundColor = UIColor.whiteColor()
         createSubviewsIfNotCreated()
         
@@ -33,8 +33,8 @@ class HomeTableViewCell: UITableViewCell {
             fatalError("Home table view cell subviews were not created before being used.")
         }
         
-        nameLabel.text = "Swift REPL"
-        descriptionLabel.text = "The Swift REPL allows you to download a bunch of stuff."
+        nameLabel.text = repo.name
+        descriptionLabel.text = repo.description
     }
     
     private func createSubviewsIfNotCreated() {
