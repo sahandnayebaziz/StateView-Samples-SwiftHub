@@ -13,6 +13,8 @@ SwiftHub displays Swift repositories on Github sorted by each repository's numbe
 
 ## What's in the box?
 
+![SwiftHub](https://www.dropbox.com/s/83lzvjup2t62jrd/SwiftHub.gif?dl=1)
+
 - 1 iOS app
 
 ## Credits
