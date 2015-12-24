@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SafariServices
 
-class HomeViewController: UIViewController, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, FilteredDisplayDelegate {
     
     var dataSource: HomeTableViewDataSource
     var tableView: UITableView
@@ -36,6 +36,18 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self.dataSource
         dataSource.tableView = tableView
         tableView.delegate = self
+        
+        let button = FloatingButton(title: "Filters")
+        view.addSubview(button)
+        button.snp_makeConstraints { make in
+            make.width.equalTo(117)
+            make.height.equalTo(37)
+            make.bottom.equalTo(self.view.snp_bottom).offset(-16)
+            make.right.equalTo(self.view.snp_right).offset(-28)
+        }
+        
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedFilter"))
+        SHGithub.go.getRepositories(false, atPage: 0, filters: nil, receiver: dataSource)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -47,10 +59,17 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let repo = SHGithub.go.getRepositories(true, atPage: nil, receiver: nil)[indexPath.row]
-        let viewController = SFSafariViewController(URL: repo.url)
+        let viewController = SFSafariViewController(URL: dataSource.receivedRepos[indexPath.row].url)
         presentViewController(viewController, animated: true) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    func tappedFilter() {
+        presentViewController(FilterAlertViewController(delegate: self), animated: true, completion: nil)
+    }
+    
+    func shouldUpdateWithFilters(filters: [SHGithubFilterType]) {
+        dataSource.shouldUpdateWithFilters(filters)
     }
 }

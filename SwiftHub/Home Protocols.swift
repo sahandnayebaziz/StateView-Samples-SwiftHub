@@ -11,3 +11,7 @@ import UIKit
 protocol RepoViewDelegate {
     func refreshReposWithNewFilters(filters: [RepositoriesFilter]?)
 }
+
+protocol FilteredDisplayDelegate {
+    func shouldUpdateWithFilters(filters: [SHGithubFilterType])
+}

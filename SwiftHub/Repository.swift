@@ -6,11 +6,7 @@
 //  Copyright (c) 2015 Sahand Nayebaziz. All rights reserved.
 //
 
-import Foundation
-
-enum RepositoryError: ErrorType {
-    case DeserializationFailed
-}
+import UIKit
 
 struct Repository: Equatable, Hashable {
     var name: String
@@ -31,22 +27,17 @@ struct Repository: Equatable, Hashable {
     
     init(serialized: NSData) throws {
         guard let dict = NSKeyedUnarchiver.unarchiveObjectWithData(serialized) as? [String: AnyObject] else {
-            throw RepositoryError.DeserializationFailed
+            throw RepositorySerializationError.DeserializationFailed
         }
         
-        guard let name = dict["name"] as? String, let owner = dict["owner"] as? String, let stars = dict["stars"] as? Int, let description = dict["description"] as? String, let urlString = dict["urlString"] as? String, let id = dict["id"] as? Int else {
-            throw RepositoryError.DeserializationFailed
+        guard let name = dict["name"] as? String, let owner = dict["owner"] as? String, let stars = dict["stars"] as? Int, let description = dict["description"] as? String, let urlString = dict["urlString"] as? String, let id = dict["id"] as? Int, let url = NSURL(string: urlString) else {
+            throw RepositorySerializationError.DeserializationFailed
         }
         
         self.name = name
         self.owner = owner
         self.stars = stars
         self.description = description
-        
-        guard let url = NSURL(string: urlString) else {
-            throw RepositoryError.DeserializationFailed
-        }
-        
         self.url = url
         self.id = id
     }

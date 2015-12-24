@@ -17,29 +17,29 @@ class SHGithub: NSObject {
     private let endpointRepos = "https://api.github.com/search/repositories"
     private let parameters: [String: String] = ["sort":"stars", "order":"desc"]
     
-    private var nextPageToCache = 0
-    private var cachedRepositories: [Repository] = []
+    private var cache = NSCache()
     
-    func getRepositories(cachedOnly: Bool, atPage: Int?, receiver: SHGithubDataReceiver?) -> [Repository] {
-        if cachedOnly {
-            return cachedRepositories
-        } else {
-            if let page = atPage, receiver = receiver {
-                if page >= nextPageToCache {
-                    getRepositoriesFromGithub(page, receiver: receiver)
-                    self.nextPageToCache = page + 1
-                }
-            }
-        }
+    func getRepositories(cachedOnly: Bool, atPage: Int?, filters: [SHGithubFilterType]?, receiver: SHGithubDataReceiver?) -> [Repository] {
         
-        return cachedRepositories
+        if let cached = cache.objectForKey(self.createQueryStringForFilters(filters)) as? NSData {
+            do {
+                let repos = try SHGithubCacheProcessor.processReposFromCache(cached)
+                receiver?.receiveNewRepos(repos)
+                return repos
+            } catch {
+                return []
+            }
+        } else {
+            getRepositoriesFromGithub(0, filters: filters, receiver: receiver)
+            return []
+        }
     }
     
-    private func getRepositoriesFromGithub(atPage: Int, receiver: SHGithubDataReceiver) {
+    private func getRepositoriesFromGithub(atPage: Int, filters: [SHGithubFilterType]?, receiver: SHGithubDataReceiver?) {
         var urlParams = parameters
-        urlParams["q"] = "language:swift"
-        print("getting repos")
+        urlParams["q"] = createQueryStringForFilters(filters)
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         Alamofire.request(.GET, endpointRepos, parameters: urlParams)
             .validate()
             .responseJSON {
@@ -61,10 +61,10 @@ class SHGithub: NSObject {
                     repos.append(self.createRepoFromJSON(repoData))
                 }
                 
-                for repo in repos {
-                    self.cachedRepositories.append(repo)
-                }
-                receiver.receiveNewRepos(repos)
+                self.cache.setObject(SHGithubCacheProcessor.processReposForCache(repos), forKey: self.createQueryStringForFilters(filters))
+                receiver?.receiveNewRepos(repos)
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
     
@@ -77,5 +77,15 @@ class SHGithub: NSObject {
         let id = json["id"].intValue
         
         return Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
+    }
+    
+    private func createQueryStringForFilters(filters: [SHGithubFilterType]?) -> String {
+        var queryString = "language:swift"
+        if let filters = filters {
+            for filter in filters {
+                queryString = "\(queryString) \(filter.qualifierString)"
+            }
+        }
+        return queryString
     }
 }

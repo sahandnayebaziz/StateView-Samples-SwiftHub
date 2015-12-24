@@ -8,12 +8,15 @@
 
 import UIKit
 
-class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataReceiver {
+class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataReceiver, FilteredDisplayDelegate {
     
     var tableView: UITableView? = nil
     
+    var receivedRepos: [Repository] = []
+    var receivedFilters: [SHGithubFilterType] = []
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SHGithub.go.getRepositories(false, atPage: 0, receiver: self).count
+        return receivedRepos.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -22,10 +25,7 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataRece
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HomeTableViewCell", forIndexPath: indexPath) as! HomeTableViewCell
-        let repo = SHGithub.go.getRepositories(true, atPage: nil, receiver: nil)[indexPath.row]
-
-        cell.configureCell(repo)
-        
+        cell.configureCell(receivedRepos[indexPath.row])
         return cell
     }
     
@@ -34,7 +34,13 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataRece
             fatalError("Table view can not be used from HomeTableViewDataSource before it has been assigned.")
         }
         
+        self.receivedRepos = repos
         tableView.reloadData()
+    }
+    
+    func shouldUpdateWithFilters(filters: [SHGithubFilterType]) {
+        self.receivedFilters = filters
+        SHGithub.go.getRepositories(false, atPage: 0, filters: filters, receiver: self)
     }
 
 }

@@ -24,4 +24,8 @@ struct SHColors {
     static var grayLightest: UIColor {
         return createColorFromRGB(244, g: 244, b: 244)
     }
+    
+    static var blue: UIColor {
+        return createColorFromRGB(74, g: 144, b: 226)
+    }
 }
