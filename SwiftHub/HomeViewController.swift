@@ -37,16 +37,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, FilteredDisplay
         dataSource.tableView = tableView
         tableView.delegate = self
         
-        let button = FloatingButton(title: "Filters")
-        view.addSubview(button)
-        button.snp_makeConstraints { make in
-            make.width.equalTo(117)
-            make.height.equalTo(37)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-16)
-            make.right.equalTo(self.view.snp_right).offset(-28)
-        }
+//        let button = FloatingButton(title: "Filters")
+//        view.addSubview(button)
+//        button.snp_makeConstraints { make in
+//            make.width.equalTo(117)
+//            make.height.equalTo(37)
+//            make.bottom.equalTo(self.view.snp_bottom).offset(-16)
+//            make.right.equalTo(self.view.snp_right).offset(-28)
+//        }
+//        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedFilter"))
         
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedFilter"))
         SHGithub.go.getRepositories(false, atPage: 0, filters: nil, receiver: dataSource)
     }
 

@@ -25,6 +25,10 @@ struct SHColors {
         return createColorFromRGB(244, g: 244, b: 244)
     }
     
+    static var graySubtitle: UIColor {
+        return createColorFromRGB(153, g: 153, b: 153)
+    }
+    
     static var blue: UIColor {
         return createColorFromRGB(74, g: 144, b: 226)
     }

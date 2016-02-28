@@ -38,45 +38,43 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     private func createSubviewsIfNotCreated() {
-        if nameLabel == nil {
-            let newNameLabel = UILabel()
-            addSubview(newNameLabel)
-            newNameLabel.font = UIFont.systemFontOfSize(17, weight: UIFontWeightMedium)
-            newNameLabel.snp_makeConstraints { make in
-                make.left.equalTo(10)
-                make.top.equalTo(10)
-                make.right.equalTo(-10)
-                make.height.equalTo(20)
-            }
-            self.nameLabel = newNameLabel
+        guard nameLabel == nil && descriptionLabel == nil else {
+            return
         }
         
-        if descriptionLabel == nil {
-            let newDescriptionLabel = UILabel()
-            addSubview(newDescriptionLabel)
-            newDescriptionLabel.font = UIFont.systemFontOfSize(12, weight: UIFontWeightRegular)
-            newDescriptionLabel.textColor = SHColors.grayLight
-            newDescriptionLabel.snp_makeConstraints { make in
-                make.bottom.equalTo(self).offset(-8)
-                make.left.equalTo(10)
-                make.right.equalTo(self).offset(-10)
-                make.height.equalTo(14)
-            }
-            self.descriptionLabel = newDescriptionLabel
+        let newNameLabel = UILabel()
+        addSubview(newNameLabel)
+        newNameLabel.font = UIFont.systemFontOfSize(17, weight: UIFontWeightRegular)
+        newNameLabel.snp_makeConstraints { make in
+            make.left.equalTo(14)
+            make.top.equalTo(12)
+            make.right.equalTo(self).offset(-14)
+            make.height.equalTo(20)
         }
+        self.nameLabel = newNameLabel
         
-        if separatorView == nil {
-            let newSeparatorView = UIView()
-            newSeparatorView.backgroundColor = SHColors.grayLightest
-            addSubview(newSeparatorView)
-            newSeparatorView.snp_makeConstraints { make in
-                make.height.equalTo(1)
-                make.left.equalTo(self)
-                make.right.equalTo(self)
-                make.bottom.equalTo(self)
-            }
-            self.separatorView = newSeparatorView
+        let newDescriptionLabel = UILabel()
+        addSubview(newDescriptionLabel)
+        newDescriptionLabel.font = UIFont.systemFontOfSize(11, weight: UIFontWeightRegular)
+        newDescriptionLabel.textColor = SHColors.graySubtitle
+        newDescriptionLabel.snp_makeConstraints { make in
+            make.top.equalTo(newNameLabel.snp_bottom).offset(2)
+            make.left.equalTo(newNameLabel)
+            make.right.equalTo(newNameLabel)
+            make.height.equalTo(14)
         }
+        self.descriptionLabel = newDescriptionLabel
+        
+        let newSeparatorView = UIView()
+        newSeparatorView.backgroundColor = SHColors.grayLightest
+        addSubview(newSeparatorView)
+        newSeparatorView.snp_makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(self)
+            make.right.equalTo(self)
+            make.bottom.equalTo(self)
+        }
+        self.separatorView = newSeparatorView
         
     }
 
