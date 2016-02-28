@@ -1,21 +1,26 @@
-# SwiftHub
+![import Genius](https://www.dropbox.com/s/w7ga70d9gt9a7d3/swifthub%20header.png?dl=1)
 
-![App Icon](icon.png?raw=true "App Icon")
+SwiftHub is an iOS app that displays Swift repositories from Github.
 
-SwiftHub is an iOS app that helps you keep up on the latest public Swift repositories popping up on Github!
+## Overview
 
-Pull requests are very welcome!
+SwiftHub displays Swift repositories on Github sorted by each repository's number of stars. SwiftHub can filter on repositories created in the last week, month, or year. Github's 'trending' list is not available through the Github API. SwiftHub demonstrates basic HTTP requests, protocol-oriented data flow, data modeling, a cache layer made with NSCache, and views made in code with AutoLayout.
 
-### Requirements
+## What you need
 
-iOS 9.0 & Xcode 7
+- iOS 9.0
+- Xcode 7.1
 
-SwiftHub uses SFSafariViewController, which is awesome, because you can easily log in to Github to star new repositories.
+## What's in the box?
 
-### Version
-1.0
+![SwiftHub](https://www.dropbox.com/s/83lzvjup2t62jrd/SwiftHub.gif?dl=1)
 
-### Screenshots
-![Repositories](screenshot-1.png?raw=true "Empty View")
+- 1 iOS app
 
-![Detail View](screenshot-2.png?raw=true "Spots View")
+## Credits
+
+SwiftHub was designed by Sahand Nayebaziz.
+
+## License
+
+SwiftHub is released under the MIT license. See LICENSE for details.
