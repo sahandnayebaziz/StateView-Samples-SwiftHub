@@ -23,23 +23,23 @@ class FilterAlertViewController: UIAlertController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Filter Swift Repositories by their creation date"
-        addAction(UIAlertAction(title: "All time", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([])
-            })
-        
-        addAction(UIAlertAction(title: "Last Year", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastYear])
+        message="Filter Swift Repositories by their creation date"
+        addAction(UIAlertAction(title: "Last Week", style: UIAlertActionStyle.Default) { action in
+            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastWeek])
             })
         
         addAction(UIAlertAction(title: "Last Month", style: UIAlertActionStyle.Default) { action in
             self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastMonth])
             })
         
-        addAction(UIAlertAction(title: "Last Week", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastWeek])
+        addAction(UIAlertAction(title: "Last Year", style: UIAlertActionStyle.Default) { action in
+            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastYear])
             })
         
+        addAction(UIAlertAction(title: "All time", style: UIAlertActionStyle.Default) { action in
+            self.delegate.shouldUpdateWithFilters([])
+            })
+
         addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { action in
             
             })
