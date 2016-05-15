@@ -10,16 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SHGithub: NSObject {
+class SHGitHub: NSObject {
     
-    static let go = SHGithub()
+    static let go = SHGitHub()
     
     private let endpointRepos = "https://api.github.com/search/repositories"
     private let parameters: [String: String] = ["sort":"stars", "order":"desc"]
     
     private var cache = NSCache()
     
-    func getRepositories(cachedOnly: Bool, atPage: Int?, filters: [SHGithubFilterType]?, receiver: SHGithubDataReceiver?) -> [Repository] {
+    func getRepositories(cachedOnly: Bool, atPage: Int?, filters: [SHGithubCreatedFilter]?, receiver: SHGithubDataReceiver?) -> [Repository] {
         
         if let cached = cache.objectForKey(self.createQueryStringForFilters(filters)) as? NSData {
             do {
@@ -35,7 +35,7 @@ class SHGithub: NSObject {
         }
     }
     
-    private func getRepositoriesFromGithub(atPage: Int, filters: [SHGithubFilterType]?, receiver: SHGithubDataReceiver?) {
+    private func getRepositoriesFromGithub(atPage: Int, filters: [SHGithubCreatedFilter]?, receiver: SHGithubDataReceiver?) {
         var urlParams = parameters
         urlParams["q"] = createQueryStringForFilters(filters)
         
@@ -79,7 +79,7 @@ class SHGithub: NSObject {
         return Repository(name: name, owner: owner, stars: stars, description: description, url: url, id: id)
     }
     
-    private func createQueryStringForFilters(filters: [SHGithubFilterType]?) -> String {
+    private func createQueryStringForFilters(filters: [SHGithubCreatedFilter]?) -> String {
         var queryString = "language:swift"
         if let filters = filters {
             for filter in filters {

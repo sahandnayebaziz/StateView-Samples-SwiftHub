@@ -1,0 +1,6 @@
+framework module AuthenticationViewController {
+  umbrella header "AuthenticationViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

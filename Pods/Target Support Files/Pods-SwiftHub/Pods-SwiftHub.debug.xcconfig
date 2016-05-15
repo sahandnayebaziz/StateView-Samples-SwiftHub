@@ -1,0 +1,9 @@
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$CONFIGURATION_BUILD_DIR/AFDateHelper" "$CONFIGURATION_BUILD_DIR/Alamofire" "$CONFIGURATION_BUILD_DIR/AuthenticationViewController" "$CONFIGURATION_BUILD_DIR/BRYXBanner" "$CONFIGURATION_BUILD_DIR/OMGHTTPURLRQ" "$CONFIGURATION_BUILD_DIR/PromiseKit" "$CONFIGURATION_BUILD_DIR/SnapKit" "$CONFIGURATION_BUILD_DIR/SwiftyJSON" "$CONFIGURATION_BUILD_DIR/SwiftyUserDefaults"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/AFDateHelper/AFDateHelper.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/AuthenticationViewController/AuthenticationViewController.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/BRYXBanner/BRYXBanner.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/OMGHTTPURLRQ/OMGHTTPURLRQ.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/PromiseKit/PromiseKit.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SnapKit/SnapKit.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SwiftyJSON/SwiftyJSON.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AFDateHelper" -framework "Alamofire" -framework "AuthenticationViewController" -framework "BRYXBanner" -framework "OMGHTTPURLRQ" -framework "PromiseKit" -framework "SnapKit" -framework "SwiftyJSON" -framework "SwiftyUserDefaults"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_ROOT = ${SRCROOT}/Pods
+SWIFT_INSTALL_OBJC_HEADER = NO

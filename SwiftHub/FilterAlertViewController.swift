@@ -25,15 +25,15 @@ class FilterAlertViewController: UIAlertController {
         super.viewDidLoad()
         message="Filter Swift Repositories by their creation date"
         addAction(UIAlertAction(title: "Last Week", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastWeek])
+            self.delegate.shouldUpdateWithFilters([SHGithubCreatedFilter.LastWeek])
             })
         
         addAction(UIAlertAction(title: "Last Month", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastMonth])
+            self.delegate.shouldUpdateWithFilters([SHGithubCreatedFilter.LastMonth])
             })
         
         addAction(UIAlertAction(title: "Last Year", style: UIAlertActionStyle.Default) { action in
-            self.delegate.shouldUpdateWithFilters([SHGithubFilterType.LastYear])
+            self.delegate.shouldUpdateWithFilters([SHGithubCreatedFilter.LastYear])
             })
         
         addAction(UIAlertAction(title: "All time", style: UIAlertActionStyle.Default) { action in

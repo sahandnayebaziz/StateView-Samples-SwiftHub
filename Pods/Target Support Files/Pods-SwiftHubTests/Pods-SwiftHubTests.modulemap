@@ -1,0 +1,6 @@
+framework module Pods_SwiftHubTests {
+  umbrella header "Pods-SwiftHubTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

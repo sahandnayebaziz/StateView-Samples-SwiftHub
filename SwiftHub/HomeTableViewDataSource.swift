@@ -13,7 +13,7 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataRece
     var tableView: UITableView? = nil
     
     var receivedRepos: [Repository] = []
-    var receivedFilters: [SHGithubFilterType] = []
+    var receivedFilters: [SHGithubCreatedFilter] = []
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return receivedRepos.count
@@ -38,9 +38,9 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataRece
         tableView.reloadData()
     }
     
-    func shouldUpdateWithFilters(filters: [SHGithubFilterType]) {
+    func shouldUpdateWithFilters(filters: [SHGithubCreatedFilter]) {
         self.receivedFilters = filters
-        SHGithub.go.getRepositories(false, atPage: 0, filters: filters, receiver: self)
+        SHGitHub.go.getRepositories(false, atPage: 0, filters: filters, receiver: self)
     }
 
 }

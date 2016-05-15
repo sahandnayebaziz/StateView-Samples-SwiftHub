@@ -1,5 +1,5 @@
 //
-//  SHGithubFilter.swift
+//  SHGithubCreatedFilter.swift
 //  SwiftHub
 //
 //  Created by Sahand Nayebaziz on 12/23/15.
@@ -9,7 +9,7 @@
 import Foundation
 import AFDateHelper
 
-enum SHGithubFilterType: String {
+enum SHGithubCreatedFilter: String, SHGitHubFilter {
     case LastWeek, LastMonth, LastYear
     
     var qualifierString: String {
