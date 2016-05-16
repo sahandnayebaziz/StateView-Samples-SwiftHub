@@ -38,7 +38,7 @@ class HomeTableViewDataSource: NSObject, UITableViewDataSource, SHGithubDataRece
         tableView.reloadData()
     }
     
-    func shouldUpdateWithFilters(filters: [SHGithubCreatedFilter]) {
+    func didReceiveFilters(filters: [SHGithubCreatedFilter]) {
         self.receivedFilters = filters
         SHGitHub.go.getRepositories(false, atPage: 0, filters: filters, receiver: self)
     }

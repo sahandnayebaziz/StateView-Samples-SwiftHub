@@ -25,9 +25,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, FilteredDisplay
         
         view.addSubview(tableView)
         tableView.snp_makeConstraints { make in
-            make.height.equalTo(self.view)
+            make.height.equalTo(self.view).offset(-72)
             make.width.equalTo(self.view).offset(-24)
-            make.center.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view)
         }
         tableView.backgroundColor = UIColor.clearColor()
         tableView.separatorStyle = .None
@@ -37,15 +38,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, FilteredDisplay
         dataSource.tableView = tableView
         tableView.delegate = self
         
-        let button = FloatingButton(title: "Filters")
-        view.addSubview(button)
-        button.snp_makeConstraints { make in
-            make.width.equalTo(117)
-            make.height.equalTo(37)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-16)
-            make.right.equalTo(self.view.snp_right).offset(-28)
+        let controlPanel = ControlPanelView(parentViewController: self)
+        view.addSubview(controlPanel)
+        controlPanel.snp_makeConstraints { make in
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.width.equalTo(self.view).offset(-24)
+            make.height.equalTo(45)
+            make.bottom.equalTo(self.view).offset(-13)
         }
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedFilter)))
+        controlPanel.renderDeep()
         
         SHGitHub.go.getRepositories(false, atPage: 0, filters: nil, receiver: dataSource)
     }
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, FilteredDisplay
         presentViewController(FilterAlertViewController(delegate: self), animated: true, completion: nil)
     }
     
-    func shouldUpdateWithFilters(filters: [SHGithubCreatedFilter]) {
-        dataSource.shouldUpdateWithFilters(filters)
+    func didReceiveFilters(filters: [SHGithubCreatedFilter]) {
+        dataSource.didReceiveFilters(filters)
     }
 }

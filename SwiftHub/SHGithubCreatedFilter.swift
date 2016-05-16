@@ -23,6 +23,17 @@ enum SHGithubCreatedFilter: String, SHGitHubFilter {
         }
     }
     
+    var prettyString: String {
+        switch self {
+        case .LastWeek:
+            return "Last week"
+        case .LastMonth:
+            return "Last month"
+        case .LastYear:
+            return "Last year"
+        }
+    }
+    
     private func createDateStringForDaysAgo(days: Int) -> String {
         return NSDate().dateBySubtractingDays(days).toString(format: .Custom("YYYY-MM-dd"))
     }

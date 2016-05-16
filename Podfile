@@ -12,10 +12,10 @@ pod 'PromiseKit'
 pod 'BRYXBanner'
 pod 'SwiftyUserDefaults'
 pod 'AuthenticationViewController'
+pod 'StateView'
 
 end
 
 target 'SwiftHubTests' do
 
 end
-
