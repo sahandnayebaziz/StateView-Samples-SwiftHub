@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		354D4BCA1CEE660A00716F2B /* RepoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354D4BC91CEE660A00716F2B /* RepoTableView.swift */; };
 		355EBC451CE948C300ACC91F /* ControlPanelStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355EBC441CE948C300ACC91F /* ControlPanelStatusView.swift */; };
+		355EBC481CE9642600ACC91F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355EBC471CE9642600ACC91F /* HomeView.swift */; };
 		35C898131CE936F900604CBF /* SHGitHubFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C898121CE936F900604CBF /* SHGitHubFilter.swift */; };
 		35C898161CE93B7100604CBF /* ControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C898151CE93B7100604CBF /* ControlPanelView.swift */; };
 		8DE34B2EC0FB46CB4C900146 /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0465B46789098FDF411EC70A /* Pods_SwiftHubTests.framework */; };
@@ -16,10 +18,8 @@
 		D847D2D51B8125E9003CBECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D847D2D31B8125E9003CBECE /* LaunchScreen.xib */; };
 		D85AA6381BF2C1FE00F16A9C /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA6371BF2C1FE00F16A9C /* UINavigationController.swift */; };
 		D869FDED1B81A1F100C3D3AD /* threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D869FDEC1B81A1F100C3D3AD /* threading.swift */; };
-		D8711B871C2A30AE004ECAF9 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8711B861C2A30AE004ECAF9 /* FloatingButton.swift */; };
 		D8811F741C2907C7004A9301 /* Home Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F731C2907C7004A9301 /* Home Protocols.swift */; };
 		D8811F781C290857004A9301 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F771C290857004A9301 /* HomeViewController.swift */; };
-		D8811F7A1C29089F004A9301 /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F791C29089F004A9301 /* HomeTableViewDataSource.swift */; };
 		D8811F7D1C290B80004A9301 /* SHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F7C1C290B80004A9301 /* SHColors.swift */; };
 		D8811F801C29E5C8004A9301 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */; };
 		D8811F821C29EFDA004A9301 /* SHGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8811F811C29EFDA004A9301 /* SHGitHub.swift */; };
@@ -51,7 +51,9 @@
 		0DB05D383FAADD173C61DB5F /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		18623AC9D12263B7681F37ED /* Pods-SwiftHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHub/Pods-SwiftHub.debug.xcconfig"; sourceTree = "<group>"; };
 		28D72B70AE353EC410EF2DA9 /* Pods_SwiftHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		354D4BC91CEE660A00716F2B /* RepoTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableView.swift; sourceTree = "<group>"; };
 		355EBC441CE948C300ACC91F /* ControlPanelStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPanelStatusView.swift; sourceTree = "<group>"; };
+		355EBC471CE9642600ACC91F /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		35C898121CE936F900604CBF /* SHGitHubFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHGitHubFilter.swift; sourceTree = "<group>"; };
 		35C898151CE93B7100604CBF /* ControlPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPanelView.swift; sourceTree = "<group>"; };
 		5DE20D64DA83CF7BA3559BB5 /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -64,10 +66,8 @@
 		D847D2DF1B8125E9003CBECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D85AA6371BF2C1FE00F16A9C /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D869FDEC1B81A1F100C3D3AD /* threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threading.swift; sourceTree = "<group>"; };
-		D8711B861C2A30AE004ECAF9 /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		D8811F731C2907C7004A9301 /* Home Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Home Protocols.swift"; sourceTree = "<group>"; };
 		D8811F771C290857004A9301 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D8811F791C29089F004A9301 /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
 		D8811F7C1C290B80004A9301 /* SHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHColors.swift; sourceTree = "<group>"; };
 		D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		D8811F811C29EFDA004A9301 /* SHGitHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHGitHub.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 			children = (
 				35C898151CE93B7100604CBF /* ControlPanelView.swift */,
 				355EBC441CE948C300ACC91F /* ControlPanelStatusView.swift */,
+				D847D2C61B8125E9003CBECE /* Supporting Files */,
 			);
 			name = "Control Panel";
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 			children = (
 				D869FDF71B81A88500C3D3AD /* Configuration Families */,
 				D869FDF81B81A88D00C3D3AD /* View Families */,
-				D847D2C61B8125E9003CBECE /* Supporting Files */,
 				D869FDFB1B81A8A900C3D3AD /* Libraries */,
 				D85AA6391BF2C20200F16A9C /* Extensions */,
 			);
@@ -243,22 +243,14 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		D8711B851C2A3089004ECAF9 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				D8711B861C2A30AE004ECAF9 /* FloatingButton.swift */,
-			);
-			name = Buttons;
-			sourceTree = "<group>";
-		};
 		D8811F721C290751004A9301 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				D8811F731C2907C7004A9301 /* Home Protocols.swift */,
 				D8811F771C290857004A9301 /* HomeViewController.swift */,
+				355EBC471CE9642600ACC91F /* HomeView.swift */,
 				D8811F7E1C29E5AD004A9301 /* Table View */,
 				D8C1771B1C2AED680022008A /* Filters */,
-				D8711B851C2A3089004ECAF9 /* Buttons */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -266,7 +258,7 @@
 		D8811F7E1C29E5AD004A9301 /* Table View */ = {
 			isa = PBXGroup;
 			children = (
-				D8811F791C29089F004A9301 /* HomeTableViewDataSource.swift */,
+				354D4BC91CEE660A00716F2B /* RepoTableView.swift */,
 				D8811F7F1C29E5C8004A9301 /* HomeTableViewCell.swift */,
 			);
 			name = "Table View";
@@ -500,17 +492,17 @@
 				D8811F741C2907C7004A9301 /* Home Protocols.swift in Sources */,
 				D8811F781C290857004A9301 /* HomeViewController.swift in Sources */,
 				D8811F821C29EFDA004A9301 /* SHGitHub.swift in Sources */,
+				354D4BCA1CEE660A00716F2B /* RepoTableView.swift in Sources */,
 				D8811F801C29E5C8004A9301 /* HomeTableViewCell.swift in Sources */,
 				D8811F7D1C290B80004A9301 /* SHColors.swift in Sources */,
 				D8C1771F1C2B75250022008A /* SHGithubCacheProcessor.swift in Sources */,
 				D8C177231C2B855C0022008A /* Repository.swift in Sources */,
 				D8C177211C2B81640022008A /* SHGithub Errors.swift in Sources */,
-				D8811F7A1C29089F004A9301 /* HomeTableViewDataSource.swift in Sources */,
 				D89B5B431BF31E7F0080A100 /* BannerManager.swift in Sources */,
 				D847D2C91B8125E9003CBECE /* AppDelegate.swift in Sources */,
+				355EBC481CE9642600ACC91F /* HomeView.swift in Sources */,
 				D8C1771D1C2AED9F0022008A /* FilterAlertViewController.swift in Sources */,
 				D8C1771A1C2AEB390022008A /* SHGithubCreatedFilter.swift in Sources */,
-				D8711B871C2A30AE004ECAF9 /* FloatingButton.swift in Sources */,
 				35C898161CE93B7100604CBF /* ControlPanelView.swift in Sources */,
 				355EBC451CE948C300ACC91F /* ControlPanelStatusView.swift in Sources */,
 			);

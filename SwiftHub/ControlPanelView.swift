@@ -18,12 +18,6 @@ enum ControlPanelViewKey: StateKey {
 
 class ControlPanelView: StateView, FilteredDisplayDelegate {
     
-    override func getInitialState() -> [String : Any?] {
-        return [
-            "filter" : nil
-        ]
-    }
-    
     override func render() {
         
         backgroundColor = UIColor.whiteColor()
@@ -38,7 +32,7 @@ class ControlPanelView: StateView, FilteredDisplayDelegate {
         }
         
         createdAtStatus.prop(forKey: ControlPanelViewKey.StatusKey, is: "Filter")
-        if let filter = state["filter"] as? SHGithubCreatedFilter {
+        if let filter = prop(withValueForKey: HomeViewKey.Filter) as? SHGithubCreatedFilter {
             createdAtStatus.prop(forKey: ControlPanelViewKey.StatusValue, is: filter.prettyString)
         } else {
             createdAtStatus.prop(forKey: ControlPanelViewKey.StatusValue, is: "none")
@@ -48,13 +42,7 @@ class ControlPanelView: StateView, FilteredDisplayDelegate {
         }
     }
     
-    func didReceiveFilters(filters: [SHGithubCreatedFilter]) {
-        if filters.isEmpty {
-            self.state["filter"] = nil
-        } else {
-            self.state["filter"] = filters.first!
-        }
-        
-        (parentViewController as? FilteredDisplayDelegate)?.didReceiveFilters(filters)
+    func didReceiveFilter(filter: SHGithubCreatedFilter?) {
+        prop(withFunctionForKey: HomeViewKey.DidReceiveFilter)!(["filter": filter])
     }
 }

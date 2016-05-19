@@ -13,5 +13,5 @@ protocol RepoViewDelegate {
 }
 
 protocol FilteredDisplayDelegate {
-    func didReceiveFilters(filters: [SHGithubCreatedFilter])
+    func didReceiveFilter(filter: SHGithubCreatedFilter?)
 }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = UINavigationController(rootViewController: HomeViewController())
+            window.rootViewController = UINavigationController(rootViewController: HomeStateViewController())
             window.makeKeyAndVisible()
         }
         

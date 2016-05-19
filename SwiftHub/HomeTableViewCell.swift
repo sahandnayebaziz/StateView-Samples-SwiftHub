@@ -15,12 +15,6 @@ class HomeTableViewCell: UITableViewCell {
     var starsLabel: UILabel? = nil
     var separatorView: UIView? = nil
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func configureCell(repo: Repository) {
         backgroundColor = UIColor.whiteColor()
         createSubviewsIfNotCreated()
