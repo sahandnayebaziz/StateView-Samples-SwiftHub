@@ -1,25 +1,20 @@
 ![import Genius](https://www.dropbox.com/s/w7ga70d9gt9a7d3/swifthub%20header.png?dl=1)
 
-SwiftHub is an iOS app that displays Swift repositories from Github.
+SwiftHub is an iOS app that displays Swift repositories from GitHub that was built with [StateView](https://github.com/sahandnayebaziz/StateView).
 
 ## Overview
 
-SwiftHub displays Swift repositories on Github sorted by each repository's number of stars. SwiftHub can filter on repositories created in the last week, month, or year. Github's 'trending' list is not available through the Github API. SwiftHub demonstrates basic HTTP requests, protocol-oriented data flow, data modeling, a cache layer made with NSCache, and views made in code with AutoLayout.
+SwiftHub was the second app made with [StateView](https://github.com/sahandnayebaziz/StateView), an intuitive UIView subclass I made to help make managing views and rich, interactive states in an app easier and more approachable. 
 
-## What you need
+Most of the work that you would normally do adding and removing subviews, orchestrating initializing those views and creating patterns to communicate information back and forth is taken care of by StateView as the normal code I wrote (not complex, cryptically functional, declarative, or stream and sequence based) does things like present a UIAlertController, accept an array of repositories from the GitHub API, and update a value in a state dictionary with the current filter being used. SwiftHub is safe, fast, and the source is happily missing a lot of code that would normally be there to move views around. 
 
-- iOS 9.0
-- Xcode 7.1
+SwiftHub is a simple app that can display the most popular repositories on GitHub written in Swift that were made in the last week, the last month, the last year, and anytime before that. 
 
-## What's in the box?
-
-![SwiftHub](https://www.dropbox.com/s/83lzvjup2t62jrd/SwiftHub.gif?dl=1)
-
-- 1 iOS app
+SwiftHub is a great example of what you can do with [StateView](https://github.com/sahandnayebaziz/StateView).
 
 ## Credits
 
-SwiftHub was designed by Sahand Nayebaziz.
+SwiftHub was written by Sahand Nayebaziz and made with [StateView](https://github.com/sahandnayebaziz/StateView).
 
 ## License
 
