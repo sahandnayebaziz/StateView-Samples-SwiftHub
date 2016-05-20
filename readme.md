@@ -1,6 +1,6 @@
 ![import Genius](https://www.dropbox.com/s/w7ga70d9gt9a7d3/swifthub%20header.png?dl=1)
 
-SwiftHub is an iOS app that displays Swift repositories from GitHub that was built with [StateView](https://github.com/sahandnayebaziz/StateView).
+SwiftHub is an iOS app that displays Swift repositories from GitHub. SwiftHub was built with [StateView](https://github.com/sahandnayebaziz/StateView).
 
 ## Overview
 
