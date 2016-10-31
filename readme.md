@@ -12,6 +12,11 @@ SwiftHub is a simple app that can display the most popular repositories on GitHu
 
 SwiftHub is a great example of what you can do with [StateView](https://github.com/sahandnayebaziz/StateView).
 
+## Screenshots
+
+<img width=250 src="https://github.com/sahandnayebaziz/StateView-Samples-SwiftHub/blob/master/screenshot1.png?raw=true"> 
+<img width=250 src="https://github.com/sahandnayebaziz/StateView-Samples-SwiftHub/blob/master/screenshot2.png?raw=true"> 
+
 ## Credits
 
 SwiftHub was written by Sahand Nayebaziz and made with [StateView](https://github.com/sahandnayebaziz/StateView).
