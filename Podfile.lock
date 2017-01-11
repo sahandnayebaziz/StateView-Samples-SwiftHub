@@ -1,34 +1,24 @@
 PODS:
-  - AFDateHelper (3.3.1)
-  - Alamofire (3.4.0)
-  - AuthenticationViewController (1.1.0)
-  - BRYXBanner (0.5.2):
-    - BRYXBanner/Core (= 0.5.2)
-  - BRYXBanner/Core (0.5.2)
-  - OMGHTTPURLRQ (3.1.1):
-    - OMGHTTPURLRQ/RQ (= 3.1.1)
-  - OMGHTTPURLRQ/FormURLEncode (3.1.1)
-  - OMGHTTPURLRQ/RQ (3.1.1):
-    - OMGHTTPURLRQ/FormURLEncode
-    - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.1.1)
-  - PromiseKit (3.1.1):
-    - PromiseKit/Foundation (= 3.1.1)
-    - PromiseKit/QuartzCore (= 3.1.1)
-    - PromiseKit/UIKit (= 3.1.1)
-  - PromiseKit/CorePromise (3.1.1)
-  - PromiseKit/Foundation (3.1.1):
-    - OMGHTTPURLRQ (~> 3.1.0)
+  - AFDateHelper (3.5.3)
+  - Alamofire (4.2.0)
+  - AuthenticationViewController (1.2.0)
+  - BRYXBanner (0.7.1)
+  - PromiseKit (4.1.3):
+    - PromiseKit/Foundation (= 4.1.3)
+    - PromiseKit/QuartzCore (= 4.1.3)
+    - PromiseKit/UIKit (= 4.1.3)
+  - PromiseKit/CorePromise (4.1.3)
+  - PromiseKit/Foundation (4.1.3):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.1.1):
+  - PromiseKit/QuartzCore (4.1.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.1.1):
+  - PromiseKit/UIKit (4.1.3):
     - PromiseKit/CorePromise
-  - SnapKit (0.21.0)
-  - StateView (1.3):
+  - SnapKit (3.1.2)
+  - StateView (2.0):
     - SnapKit
-  - SwiftyJSON (2.3.2)
-  - SwiftyUserDefaults (2.2.0)
+  - SwiftyJSON (3.1.4)
+  - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
   - AFDateHelper
@@ -42,17 +32,16 @@ DEPENDENCIES:
   - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  AFDateHelper: 3cf2296dc56cdc72af8fb8e73fb04ca0bd1999ae
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AuthenticationViewController: 22636ba2e87bdabc8dd8cedf9782f7474516d603
-  BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
-  OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
-  PromiseKit: 4e8127c22a9b29d1b44958ab2ec762ea6115cbfb
-  SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
-  StateView: 32e2a4175872a6181b2dbaf2ec1de57b3da942b8
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  AuthenticationViewController: 84b3be370df86945006e8b215bf988c726b4b4dc
+  BRYXBanner: 34eabf9c6c009f187948ca78a4f3bba3767d0f04
+  PromiseKit: 56baec63efa89210c023260879435a5a6b3bff00
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  StateView: bbdc8fb47d0134c9e928d2341a75a0c286a14a59
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
 PODFILE CHECKSUM: e695985d179a927fcc900f97e9cd69085cbf33e5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.2.0.beta.1
