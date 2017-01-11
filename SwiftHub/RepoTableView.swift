@@ -21,14 +21,14 @@ class RepoTableView: StateView, UITableViewDataSource, UITableViewDelegate {
     override func render() {
         if tableView == nil {
             let tableView = UITableView()
-            tableView.backgroundColor = UIColor.clearColor()
-            tableView.separatorStyle = .None
-            tableView.registerClass(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
+            tableView.backgroundColor = UIColor.clear
+            tableView.separatorStyle = .none
+            tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
             tableView.dataSource = self
             tableView.delegate = self
             
             addSubview(tableView)
-            tableView.snp_makeConstraints { make in
+            tableView.snp.makeConstraints { make in
                 make.size.equalTo(self)
                 make.center.equalTo(self)
             }
@@ -36,30 +36,30 @@ class RepoTableView: StateView, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let repos = prop(withValueForKey: HomeViewKey.Repositories) as? [Repository] else { fatalError() }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let repos = prop(withValueForKey: HomeViewKey.repositories) as? [Repository] else { fatalError() }
         
         return repos.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let repos = prop(withValueForKey: HomeViewKey.Repositories) as? [Repository] else { fatalError() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let repos = prop(withValueForKey: HomeViewKey.repositories) as? [Repository] else { fatalError() }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("HomeTableViewCell", forIndexPath: indexPath) as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.configureCell(repos[indexPath.row])
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 59
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let repos = prop(withValueForKey: HomeViewKey.Repositories) as? [Repository] else { fatalError() }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let repos = prop(withValueForKey: HomeViewKey.repositories) as? [Repository] else { fatalError() }
         
-        let viewController = SFSafariViewController(URL: repos[indexPath.row].url)
-        parentViewController.presentViewController(viewController, animated: true) {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let viewController = SFSafariViewController(url: repos[indexPath.row].url)
+        parentViewController.present(viewController, animated: true) {
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

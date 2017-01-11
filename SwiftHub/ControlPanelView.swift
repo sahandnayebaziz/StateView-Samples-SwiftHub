@@ -11,16 +11,16 @@ import StateView
 
 enum ControlPanelViewKey: StateKey {
     case
-    StatusKey,
-    StatusValue,
-    StatusTappedSelector
+    statusKey,
+    statusValue,
+    statusTappedSelector
 }
 
 class ControlPanelView: StateView, FilteredDisplayDelegate {
     
     override func render() {
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         clipsToBounds = true
         layer.cornerRadius = 4.0
         
@@ -31,18 +31,18 @@ class ControlPanelView: StateView, FilteredDisplayDelegate {
             make.width.equalTo(self).dividedBy(2).offset(-56)
         }
         
-        createdAtStatus.prop(forKey: ControlPanelViewKey.StatusKey, is: "Filter")
-        if let filter = prop(withValueForKey: HomeViewKey.Filter) as? SHGithubCreatedFilter {
-            createdAtStatus.prop(forKey: ControlPanelViewKey.StatusValue, is: filter.prettyString)
+        createdAtStatus.prop(forKey: ControlPanelViewKey.statusKey, is: "Filter")
+        if let filter = prop(withValueForKey: HomeViewKey.filter) as? SHGithubCreatedFilter {
+            createdAtStatus.prop(forKey: ControlPanelViewKey.statusValue, is: filter.prettyString)
         } else {
-            createdAtStatus.prop(forKey: ControlPanelViewKey.StatusValue, is: "none")
+            createdAtStatus.prop(forKey: ControlPanelViewKey.statusValue, is: "none")
         }
-        createdAtStatus.prop(forKey: ControlPanelViewKey.StatusTappedSelector) { _ in
-            self.parentViewController.presentViewController(FilterAlertViewController(delegate: self), animated: true, completion: nil)
+        createdAtStatus.prop(forKey: ControlPanelViewKey.statusTappedSelector) { _ in
+            self.parentViewController.present(FilterAlertViewController(delegate: self), animated: true, completion: nil)
         }
     }
     
-    func didReceiveFilter(filter: SHGithubCreatedFilter?) {
-        prop(withFunctionForKey: HomeViewKey.DidReceiveFilter)!(["filter": filter])
+    func didReceiveFilter(_ filter: SHGithubCreatedFilter?) {
+        prop(withFunctionForKey: HomeViewKey.didReceiveFilter)!(["filter": filter])
     }
 }

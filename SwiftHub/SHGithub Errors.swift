@@ -8,6 +8,6 @@
 
 import UIKit
 
-enum RepositorySerializationError: ErrorType {
-    case DeserializationFailed, SerializationFailed
+enum RepositorySerializationError: Error {
+    case deserializationFailed, serializationFailed
 }

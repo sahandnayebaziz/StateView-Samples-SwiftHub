@@ -13,7 +13,7 @@ struct Repository: Equatable, Hashable {
     var owner: String
     var stars: Int
     var description: String
-    var url: NSURL
+    var url: URL
     var id: Int
     
     init(name: String, owner: String, stars: Int, description: String, url: String, id: Int) {
@@ -21,17 +21,17 @@ struct Repository: Equatable, Hashable {
         self.owner = owner
         self.stars = stars
         self.description = description
-        self.url = NSURL(string: url)!
+        self.url = URL(string: url)!
         self.id = id
     }
     
     init(serialized: NSData) throws {
-        guard let dict = NSKeyedUnarchiver.unarchiveObjectWithData(serialized) as? [String: AnyObject] else {
-            throw RepositorySerializationError.DeserializationFailed
+        guard let dict = NSKeyedUnarchiver.unarchiveObject(with: serialized as Data) as? [String: AnyObject] else {
+            throw RepositorySerializationError.deserializationFailed
         }
         
-        guard let name = dict["name"] as? String, let owner = dict["owner"] as? String, let stars = dict["stars"] as? Int, let description = dict["description"] as? String, let urlString = dict["urlString"] as? String, let id = dict["id"] as? Int, let url = NSURL(string: urlString) else {
-            throw RepositorySerializationError.DeserializationFailed
+        guard let name = dict["name"] as? String, let owner = dict["owner"] as? String, let stars = dict["stars"] as? Int, let description = dict["description"] as? String, let urlString = dict["urlString"] as? String, let id = dict["id"] as? Int, let url = URL(string: urlString) else {
+            throw RepositorySerializationError.deserializationFailed
         }
         
         self.name = name
@@ -44,14 +44,14 @@ struct Repository: Equatable, Hashable {
     
     var serialized: NSData {
         let values: [String: AnyObject] = [
-            "name": name,
-            "owner": owner,
-            "stars": stars,
-            "description": description,
-            "urlString": url.absoluteString,
-            "id": id
+            "name": name as AnyObject,
+            "owner": owner as AnyObject,
+            "stars": stars as AnyObject,
+            "description": description as AnyObject,
+            "urlString": url.absoluteString as AnyObject,
+            "id": id as AnyObject
         ]
-        return NSKeyedArchiver.archivedDataWithRootObject(values)
+        return NSKeyedArchiver.archivedData(withRootObject: values) as NSData
     }
     
     var hashValue: Int {
