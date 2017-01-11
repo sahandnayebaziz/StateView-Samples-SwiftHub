@@ -2,6 +2,11 @@
 
 SwiftHub is an iOS app that displays Swift repositories from GitHub. SwiftHub was built with [StateView](https://github.com/sahandnayebaziz/StateView).
 
+## Requirements
+
+- Swift 3+
+- StateView
+
 ## Overview
 
 SwiftHub was the second app made with [StateView](https://github.com/sahandnayebaziz/StateView), an intuitive UIView subclass I made to help make managing views and rich, interactive states in an app easier and more approachable. 
