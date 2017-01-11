@@ -9,9 +9,9 @@
 import UIKit
 
 protocol RepoViewDelegate {
-    func refreshReposWithNewFilters(filters: [SHGitHubFilter]?)
+    func refreshReposWithNewFilters(_ filters: [SHGitHubFilter]?)
 }
 
 protocol FilteredDisplayDelegate {
-    func didReceiveFilter(filter: SHGithubCreatedFilter?)
+    func didReceiveFilter(_ filter: SHGithubCreatedFilter?)
 }

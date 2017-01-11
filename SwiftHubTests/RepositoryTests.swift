@@ -32,7 +32,7 @@ class RepositoryTests: XCTestCase {
     }
     
     func testRepositorySerializationDoesThrow() {
-        let serialized = NSData()
+        let serialized = Data()
         do {
             let _ = try Repository(serialized: serialized)
             XCTFail("Repository did not throw with bogus serialization data")

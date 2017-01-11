@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SHGithubDataReceiver {
-    func receiveNewRepos(repos: [Repository])
+    func receiveNewRepos(_ repos: [Repository])
 }

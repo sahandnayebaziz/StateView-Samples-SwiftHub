@@ -10,6 +10,6 @@ import UIKit
 
 extension UINavigationController {
     func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

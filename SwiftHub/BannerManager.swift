@@ -15,16 +15,16 @@ class BannerManager {
     
     static let sharedInstance = BannerManager()
     
-    private var isShowingBanner = false
-    private var currentBanner: Banner? = nil
+    fileprivate var isShowingBanner = false
+    fileprivate var currentBanner: Banner? = nil
     
-    private var colorPrimary = UIColor(red: 255/255.0, green: 75/255.0, blue: 14/255.0, alpha: 1)
+    fileprivate var colorPrimary = UIColor(red: 255/255.0, green: 75/255.0, blue: 14/255.0, alpha: 1)
     
     func notifyAPILimit() {
         displayBannerWith("Reached API Limit", subtitle: "Please wait one minute and try again!", color: colorPrimary)
     }
     
-    private func displayBannerWith(title: String, subtitle: String, color: UIColor) {
+    fileprivate func displayBannerWith(_ title: String, subtitle: String, color: UIColor) {
         let banner = Banner(title: title, subtitle: subtitle, image: nil, backgroundColor: color, didTapBlock: nil)
         banner.dismissesOnTap = true
         banner.dismissesOnSwipe = true

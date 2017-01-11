@@ -24,23 +24,23 @@ class FilterAlertViewController: UIAlertController {
     override func viewDidLoad() {
         super.viewDidLoad()
         message="Filter Swift Repositories by their creation date"
-        addAction(UIAlertAction(title: "Last Week", style: UIAlertActionStyle.Default) { action in
+        addAction(UIAlertAction(title: "Last Week", style: UIAlertActionStyle.default) { action in
             self.delegate.didReceiveFilter(SHGithubCreatedFilter.LastWeek)
             })
         
-        addAction(UIAlertAction(title: "Last Month", style: UIAlertActionStyle.Default) { action in
+        addAction(UIAlertAction(title: "Last Month", style: UIAlertActionStyle.default) { action in
             self.delegate.didReceiveFilter(SHGithubCreatedFilter.LastMonth)
             })
         
-        addAction(UIAlertAction(title: "Last Year", style: UIAlertActionStyle.Default) { action in
+        addAction(UIAlertAction(title: "Last Year", style: UIAlertActionStyle.default) { action in
             self.delegate.didReceiveFilter(SHGithubCreatedFilter.LastYear)
             })
         
-        addAction(UIAlertAction(title: "None", style: UIAlertActionStyle.Default) { action in
+        addAction(UIAlertAction(title: "None", style: UIAlertActionStyle.default) { action in
             self.delegate.didReceiveFilter(nil)
             })
 
-        addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { action in
+        addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { action in
             
             })
     }

@@ -10,16 +10,16 @@ import Foundation
 
 struct SHGithubCacheProcessor {
     
-    static func processReposForCache(repos: [Repository]) -> NSData {
+    static func processReposForCache(_ repos: [Repository]) -> NSData {
         var archivedRepos: [NSData] = []
         for repo in repos {
             archivedRepos.append(repo.serialized)
         }
-        return NSKeyedArchiver.archivedDataWithRootObject(archivedRepos)
+        return NSKeyedArchiver.archivedData(withRootObject: archivedRepos) as NSData
     }
     
-    static func processReposFromCache(data: NSData) throws -> [Repository] {
-        guard let archivedRepos = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSData] else {
+    static func processReposFromCache(_ data: NSData) throws -> [Repository] {
+        guard let archivedRepos = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [NSData] else {
             
             return []
         }

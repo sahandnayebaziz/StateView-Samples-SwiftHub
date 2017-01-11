@@ -1,6 +1,8 @@
 # AuthenticationViewController
 A simple to use, standard interface for authenticating to OAuth 2.0 protected endpoints via SFSafariViewController.
 
+![Step1](/Screenshots/Demo.gif)
+
 ## Instructions
 In order to use this View Controller you need to be running iOS 9 on your simulator or device.
 
@@ -16,10 +18,15 @@ Prepare your `AppDelegate` to handle this newly created URL Scheme
 func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
 
     // Before doing this, you should check the url is your redirect-uri before doing anything. Be safe :)
-    if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false), let queryItems = components.queryItems, let code = queryItems.first?.value {
+    if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false),
+        queryItems = components.queryItems, 
+        code = queryItems.first?.value {
 
-        // Let's find the instance of our authentication controller, it would be the presentedViewController. This is another reason to check before that we are actually coming from the SFSafariViewController
-        if let rootViewController = window?.rootViewController, let authenticationViewController = rootViewController.presentedViewController as? AuthenticationViewController {
+        // Let's find the instance of our authentication controller, 
+        // it would be the presentedViewController. This is another 
+        // reason to check before that we are actually coming from the SFSafariViewController
+        if let rootViewController = window?.rootViewController,
+            authenticationViewController = rootViewController.presentedViewController as? AuthenticationViewController {
             authenticationViewController.authenticateWithCode(code)
         }
 
@@ -39,7 +46,9 @@ Create an `AuthenticationProvider` following the `AuthenticationProvider` protoc
 Instantiate an `AuthenticationViewController` in your code and pass in the provider.
 
 ```swift
-let provider = OAuthDribbble(clientId: "your-client-id", clientSecret: "your-client-secret", scopes: ["public", "upload"])
+let provider = OAuthDribbble(clientId: "your-client-id", 
+    clientSecret: "your-client-secret", 
+    scopes: ["public", "upload"])
 
 let authenticationViewController = AuthenticationViewController(provider: provider)
 
@@ -68,6 +77,14 @@ Add the following to your Cartfile:
 
 ``` ruby
 github "raulriera/AuthenticationViewController"
+```
+
+### CocoaPods
+
+Add the following to your Podfile:
+
+``` ruby
+pod "AuthenticationViewController"
 ```
 
 ### Manual

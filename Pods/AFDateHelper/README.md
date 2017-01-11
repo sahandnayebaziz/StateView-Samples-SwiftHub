@@ -1,11 +1,11 @@
-# AFDateHelper
+# DateHelper
 
 [![Version](https://img.shields.io/cocoapods/v/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-An NSDate Extension for Swift 2.0
+Date extension for Swift 3.0
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFDateHelper/master/Screenshot.png "Sample Project Screenshot")
 
@@ -51,6 +51,7 @@ date.isToday() -> Bool
 date.isTomorrow()-> Bool
 date.isYesterday() -> Bool
 date.isSameWeekAsDate(date) -> Bool
+date.isSameMonthAsDate(date) -> Bool
 date.isThisWeek() -> Bool
 date.isNextWeek() -> Bool
 date.isLastWeek() -> Bool
@@ -62,6 +63,10 @@ date.isLastYear() -> Bool
 
 ### Adjusting Dates
 ```Swift
+date.dateByAddingMonths(2) -> NSDate
+date.dateBySubtractingMonths(4) -> NSDate
+date.dateByAddingWeeks(2) -> NSDate
+date.dateBySubtractingWeeks(4) -> NSDate
 date.dateByAddingDays(2) -> NSDate
 date.dateBySubtractingDays(4) -> NSDate
 date.dateByAddingHours(2) -> NSDate

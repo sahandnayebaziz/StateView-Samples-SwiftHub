@@ -13,17 +13,17 @@ class ControlPanelStatusView: StateView {
     
     override func render() {
         
-        guard let key = prop(withValueForKey: ControlPanelViewKey.StatusKey) as? String, let value = prop(withValueForKey: ControlPanelViewKey.StatusValue) as? String else {
+        guard let key = prop(withValueForKey: ControlPanelViewKey.statusKey) as? String, let value = prop(withValueForKey: ControlPanelViewKey.statusValue) as? String else {
             fatalError("A ControlPanelStatusView must be initialized with a StatusKey and StatusValue")
         }
         
         let label = UILabel()
         let text = NSMutableAttributedString(string: "\(key): \(value)")
-        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, key.characters.count + 1))
+        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range: NSMakeRange(0, key.characters.count + 1))
         
-        label.font = UIFont.systemFontOfSize(15)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.attributedText = text
-        place(label, key: "StatusLabel") { make in
+        let _ = place(label, key: "StatusLabel") { make in
             make.size.equalTo(self)
             make.center.equalTo(self)
         }
@@ -32,7 +32,7 @@ class ControlPanelStatusView: StateView {
     }
     
     func viewTapped() {
-        if let action = prop(withFunctionForKey: ControlPanelViewKey.StatusTappedSelector) {
+        if let action = prop(withFunctionForKey: ControlPanelViewKey.statusTappedSelector) {
             action([:])
         }
     }

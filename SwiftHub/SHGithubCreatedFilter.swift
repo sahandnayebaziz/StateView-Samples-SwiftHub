@@ -34,7 +34,7 @@ enum SHGithubCreatedFilter: String, SHGitHubFilter {
         }
     }
     
-    private func createDateStringForDaysAgo(days: Int) -> String {
-        return NSDate().dateBySubtractingDays(days).toString(format: .Custom("YYYY-MM-dd"))
+    fileprivate func createDateStringForDaysAgo(_ days: Int) -> String {
+        return Date().dateBySubtractingDays(days).toString(.custom("YYYY-MM-dd"))
     }
 }

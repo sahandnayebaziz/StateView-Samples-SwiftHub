@@ -15,8 +15,8 @@ class HomeTableViewCell: UITableViewCell {
     var starsLabel: UILabel? = nil
     var separatorView: UIView? = nil
     
-    func configureCell(repo: Repository) {
-        backgroundColor = UIColor.whiteColor()
+    func configureCell(_ repo: Repository) {
+        backgroundColor = UIColor.white
         createSubviewsIfNotCreated()
         
         guard let nameLabel = self.nameLabel else {
@@ -31,15 +31,15 @@ class HomeTableViewCell: UITableViewCell {
         descriptionLabel.text = repo.description
     }
     
-    private func createSubviewsIfNotCreated() {
+    fileprivate func createSubviewsIfNotCreated() {
         guard nameLabel == nil && descriptionLabel == nil else {
             return
         }
         
         let newNameLabel = UILabel()
         addSubview(newNameLabel)
-        newNameLabel.font = UIFont.systemFontOfSize(17, weight: UIFontWeightRegular)
-        newNameLabel.snp_makeConstraints { make in
+        newNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightRegular)
+        newNameLabel.snp.makeConstraints { make in
             make.left.equalTo(14)
             make.top.equalTo(12)
             make.right.equalTo(self).offset(-14)
@@ -49,10 +49,10 @@ class HomeTableViewCell: UITableViewCell {
         
         let newDescriptionLabel = UILabel()
         addSubview(newDescriptionLabel)
-        newDescriptionLabel.font = UIFont.systemFontOfSize(11, weight: UIFontWeightRegular)
+        newDescriptionLabel.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightRegular)
         newDescriptionLabel.textColor = SHColors.graySubtitle
-        newDescriptionLabel.snp_makeConstraints { make in
-            make.top.equalTo(newNameLabel.snp_bottom).offset(2)
+        newDescriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(newNameLabel.snp.bottom).offset(2)
             make.left.equalTo(newNameLabel)
             make.right.equalTo(newNameLabel)
             make.height.equalTo(14)
@@ -62,7 +62,7 @@ class HomeTableViewCell: UITableViewCell {
         let newSeparatorView = UIView()
         newSeparatorView.backgroundColor = SHColors.grayLightest
         addSubview(newSeparatorView)
-        newSeparatorView.snp_makeConstraints { make in
+        newSeparatorView.snp.makeConstraints { make in
             make.height.equalTo(1)
             make.left.equalTo(self)
             make.right.equalTo(self)
